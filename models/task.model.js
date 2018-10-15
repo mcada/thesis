@@ -7,7 +7,7 @@ let TaskSchema = new Schema({
         type: String
     },
     jira_link: {
-        type: String 
+        type: String
     },
     date: {
         type: Date

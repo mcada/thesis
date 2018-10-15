@@ -7,7 +7,7 @@ let EmployeeSchema = new Schema({
         type: String
     },
     last_name: {
-        type: String 
+        type: String
     },
     rh_nick: {
         type: String
@@ -23,10 +23,10 @@ let EmployeeSchema = new Schema({
         enum: ['associate', 'engineer', 'senior', 'principal']
     },
     tasks: {
-        type: [{type: Schema.Types.ObjectId, ref:'Task'}]
+        type: [{ type: Schema.Types.ObjectId, ref: 'Task' }]
     },
     reviews: {
-        type: [{type: Schema.Types.ObjectId, ref:'Review'}]
+        type: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
     }
 });
 

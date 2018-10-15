@@ -23,7 +23,8 @@ let ReviewSchema = new Schema({
     },
     owner: {
         type: Schema.Types.ObjectId,
-        ref: 'Employee'
+        ref: 'Employee',
+        required: true
     }
 });
 
