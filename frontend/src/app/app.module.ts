@@ -11,13 +11,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TaskListComponent } from './components/task-list/task-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateComponent,
     EditComponent,
-    ListComponent
+    ListComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserModule,
