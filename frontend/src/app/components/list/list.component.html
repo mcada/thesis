@@ -1,19 +1,4 @@
-<div>
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-    <span><mat-icon>mood</mat-icon></span>
-
-    <span class="spacer">Yay, Material in Angular 2!</span>
-
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-  </mat-toolbar-row>
-  </mat-toolbar>
-  <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item>Option 1</button>
-    <button mat-menu-item>Option 2</button>
-  </mat-menu>
+<div> 
 
   <mat-card>
     <button mat-button>All</button>
@@ -28,3 +13,6 @@
     </button>
   </span>
 </div>
+
+
+<app-task-list taskId='nereknu'></app-task-list>

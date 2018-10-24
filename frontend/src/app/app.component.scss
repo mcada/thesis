@@ -1,0 +1,56 @@
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 4em;
+    border-left-style: outset;
+    border-right-style: outset;
+    
+    border-color: gold;
+  }
+
+  mat-toolbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-style: outset;
+        border-color: gold;
+        border-bottom-style: outset;
+        border-bottom-color: gold;
+  }
+
+  mat-sidenav {
+      width: 12em;
+      background: darkcyan;
+  }
+
+  mat-sidenav-content {
+      border-left-style: solid;
+      border-color: gold;
+  }
+
+  mat-card {
+    max-width: 80%;
+    margin: 2em auto;
+    text-align: center;
+  }
+  
+  mat-toolbar-row {
+    justify-content: space-between;
+  }
+
+  .nav-button {
+    background-color: lightblue;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin:10%;
+    width: 80%;
+    align-content: center;
+  }

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full'}
 ];
 
-@NgModule({
+@NgModule({ 
   imports: [ RouterModule.forRoot(routes) ],
 
   exports: [ RouterModule ]  

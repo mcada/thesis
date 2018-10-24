@@ -1,11 +1,36 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span><mat-icon>mood</mat-icon></span>
 
-<nav>
-  <a routerLink="/list">List</a>
-  <br>
-  <a routerLink="/create">Create</a>
-  <br>
-  <a routerLink="/edit/1">Edit</a>
-</nav>
+    <span class="spacer">Yay, Material in Angular 2!</span>
 
-<router-outlet></router-outlet>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item>Option 1</button>
+  <button mat-menu-item>Option 2</button>
+</mat-menu>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <nav>
+      <div>
+        <button class="nav-button" mat-raised-button routerLink="/list">List</button>
+      </div>
+      <div>
+        <button class="nav-button" mat-raised-button routerLink="/create">Create</button>
+      </div>
+      <div>
+        <button class="nav-button" mat-raised-button routerLink="/edit/1">Edit</button>
+      </div>
+
+    </nav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
