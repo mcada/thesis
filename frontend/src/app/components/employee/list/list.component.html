@@ -1,0 +1,15 @@
+<mat-nav-list>
+  <mat-list-item *ngFor="let employee of dataSource">
+     <a matLine >{{ employee.first_name }}</a>
+     <a matLine >{{ employee.last_name }}</a>
+     <a matLine >{{ employee.rhnick }}</a>
+     <a matLine >{{ employee.manager }}</a>
+     <a matLine >{{ employee.first_name }}</a>
+     <button mat-raised-button [routerLink]="['/employee/edit', employee._id]">Go To Details</button>
+
+    
+     <button mat-icon-button>
+        <mat-icon>info</mat-icon>
+     </button>
+  </mat-list-item>
+</mat-nav-list>

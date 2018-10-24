@@ -9,9 +9,13 @@ import { ListComponent } from './components/list/list.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskListComponent } from './components/task-list/task-list.component';
+import { DetailComponent } from './components/employee/detail/detail.component';
+import { EmployeeListComponent } from './components/employee/list/list.component';
+import { EditComponent as EditEmployeeComponent } from './components/employee/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { TaskListComponent } from './components/task-list/task-list.component';
     CreateComponent,
     EditComponent,
     ListComponent,
-    TaskListComponent
+    TaskListComponent,
+    DetailComponent,
+    EmployeeListComponent,
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,8 @@ import { TaskListComponent } from './components/task-list/task-list.component';
     FormsModule,
     HttpModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

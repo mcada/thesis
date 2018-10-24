@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { TaskService } from '../../services/task.service';
+import { TaskService } from '../../services/task/task.service';
 import { Task } from '../../models/task.model';
 import { MaterialModule } from '../../material.module';
 import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';

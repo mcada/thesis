@@ -5,7 +5,7 @@ import { Review } from './review.model';
 export class Employee {
     first_name: String
     last_name: String
-    rh_nick: String
+    rhnick: String
     manager: String
     team_lead: String
     position: String
