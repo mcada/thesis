@@ -11,6 +11,10 @@
     border-color: gold;
   }
 
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
   mat-toolbar {
         position: absolute;
         top: 0;

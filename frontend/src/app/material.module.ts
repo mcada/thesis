@@ -4,6 +4,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import {
   MatButtonModule,
@@ -11,7 +13,34 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatSortModule
+  MatSortModule,
+  MatNativeDateModule,
+  MatInputModule,
+
+
+
+  MatAutocompleteModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatButtonToggleModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,  
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatStepperModule,
+  MatTabsModule,
+  MatTooltipModule,
+  MatTreeModule,
 } from '@angular/material';
 
 @NgModule({
@@ -25,7 +54,33 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonToggleModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,  
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatTooltipModule,
+    MatTreeModule,
   ],
   exports: [
     MatButtonModule,
@@ -37,7 +92,33 @@ import {
     MatPaginatorModule,
     MatSortModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonToggleModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,  
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatTooltipModule,
+    MatTreeModule,
   ]
 })
 export class MaterialModule {}

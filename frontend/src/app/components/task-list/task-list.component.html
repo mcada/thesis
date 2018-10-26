@@ -1,20 +1,20 @@
+<h2 class=nadpis>
 
-
-<h2 class=nadpis>TASKS</h2>
+  TASKS</h2>
 <p class=nadpis> of user {{ taskId }}</p>
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort matSortActive="date" matSortDirection="asc">
+  <table mat-table [dataSource]="dataSource" matSort matSortActive="bonus" matSortDirection="desc">
 
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+      <td mat-cell *matCellDef="let element; let i = index; let p = $pageSize; let c = $currentPage"> {{ (c-1) * p + i + 1}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
       <td mat-cell *matCellDef="let element"> {{element.description}} </td>
     </ng-container>
 
@@ -27,12 +27,21 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.date.toLocaleDateString() }} </td>
     </ng-container>
 
-    <ng-container matColumnDef="bonus">
+    <ng-container matColumnDef="bonus_points">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Bonus points </th>
-      <td mat-cell *matCellDef="let element"> {{element.bonus_points}} </td>
+      <td mat-cell *matCellDef="let element">
+        <input matInput placeholder="{{ element.bonus_points }}" [(ngModel)]="element.bonus_points">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <button class="nav-button" mat-raised-button (click)="saveTask(element)">Save</button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -15,7 +15,7 @@ export class TaskListComponent implements OnInit {
   @Input() taskId: String;
 
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['position', 'description', 'jira', 'date', 'bonus'];
+  displayedColumns: string[] = ['position', 'description', 'jira', 'date', 'bonus_points', 'action'];
 
   constructor(private taskService: TaskService) { }
 
@@ -25,8 +25,15 @@ export class TaskListComponent implements OnInit {
   ngOnInit() {
     this.taskService.getTasks()
       .subscribe(tasks => this.dataSource.data = tasks);
-    this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator;    
     this.dataSource.sort = this.sort;
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    this.sort.sortChange.subscribe(() => 
+      this.paginator.pageIndex = 0,
+    );
+  }
+
+
+  saveTask(task: Task) {
+    console.log(task);
   }
 }

@@ -7,7 +7,8 @@ import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ListComponent } from './components/list/list.component';
 
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
@@ -32,6 +33,7 @@ import { EditComponent as EditEmployeeComponent } from './components/employee/ed
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     MaterialModule,
     BrowserAnimationsModule,
@@ -40,4 +42,5 @@ import { EditComponent as EditEmployeeComponent } from './components/employee/ed
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {  
+ }
