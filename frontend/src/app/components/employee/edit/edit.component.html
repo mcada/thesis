@@ -1,12 +1,13 @@
+<div *ngIf="employee">
+  <p> {{employee | json}}</p>
 
-<p> {{employee | json}}</p>
 
-
-<h1> Detaily tvojho kamose: </h1>
-<h2>My favorite employee is: {{ employee.first_name }}</h2>
-<p>Tasks:</p>
-<ul>
-  <li *ngFor="let task of employee.tasks">
-    {{ task | json }}
-  </li>
-</ul>
+  <h1> Detaily tvojho kamose: </h1>
+  <h2>My favorite employee is: {{ employee.first_name }}</h2>
+  <p>Tasks:</p>
+  <ul>
+    <li *ngFor="let task of employee.tasks">
+      {{ task | json }}
+    </li>
+  </ul>
+</div>

@@ -33,7 +33,9 @@ export class TaskListComponent implements OnInit {
   }
 
 
-  saveTask(task: Task) {
+  updateTask(task: Task) {
     console.log(task);
+    this.taskService.updateTask(task)
+      .subscribe(returned => console.log(returned));
   }
 }

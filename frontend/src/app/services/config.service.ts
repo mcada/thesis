@@ -20,8 +20,7 @@ export class ConfigService {
    }
 
   getFirstEmployee(): Observable<any> {
-    //TODO: insert ID of first employee or create method in backend to return random/first employee
-    return this.http.get(this.backendUrl + 'employee/' + '123123123');
+    return this.http.get(this.backendUrl + 'employee/' + '5bc07de6d2f53d92ff4f484b');
   }
 
   getEmployeeById(id: String): Observable<any> {

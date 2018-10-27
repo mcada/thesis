@@ -27,7 +27,7 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.date.toLocaleDateString() }} </td>
+      <td mat-cell *matCellDef="let element"> {{element.date }} </td>
     </ng-container>
 
     <ng-container matColumnDef="bonus_points">
@@ -40,7 +40,7 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
-        <button class="nav-button" mat-raised-button (click)="saveTask(element)">Save</button>
+        <button class="nav-button" mat-raised-button (click)="updateTask(element)">Save</button>
       </td>
     </ng-container>
 

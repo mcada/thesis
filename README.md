@@ -37,4 +37,6 @@ zjistit jake promenne budu potrebovat globalne
 
 naucit se jak funguje datepicker componenta z angular material, bude se hodit
     
-
+# memory-leaky:
+kazda komponenta co pouziva .subscribe musi implementovat OnDestroy interface
+a v OnDestroy lifecycle zavolat .unsubscribe, zatim to mam jen v employee edit komponente
