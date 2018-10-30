@@ -1,12 +1,44 @@
+<div *ngIf="employee">
 
-<p> {{employee | json}}</p>
+  <h2>Selected employee is: {{ employee.first_name }}</h2>
+  <p>Tasks:</p>
+  <ul>
+    <li *ngFor="let task of employee.tasks">
+      {{ task | json }}
+    </li>
+  </ul>
 
 
-<h1> Detaily tvojho kamose: </h1>
-<h2>My favorite employee is: {{ employee.first_name }}</h2>
-<p>Tasks:</p>
-<ul>
-  <li *ngFor="let task of employee.tasks">
-    {{ task | json }}
-  </li>
-</ul>
+
+  <div class="example-container">
+    <mat-form-field hintLabel="Length: ">
+      <input matInput #input maxlength="10" placeholder={{employee.first_name}}>
+      <mat-hint align="bottom">{{ input.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Position">
+        <mat-option value="option">senior</mat-option>
+        <mat-option value="option">engineer</mat-option>
+        <mat-option value="option">associate</mat-option>
+        <mat-option value="option">principal</mat-option>
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <form class="example-container" [formGroup]="employee">
+    <mat-form-field [employee]="employee.first_name">
+      <input matInput #input maxlength="10" placeholder={{employee.first_name}} formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field [employee]="employee.position">
+      <mat-select placeholder="Position" formControlName="position">
+        <mat-option value="option">senior</mat-option>
+        <mat-option value="option">engineer</mat-option>
+        <mat-option value="option">associate</mat-option>
+        <mat-option value="option">principal</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>

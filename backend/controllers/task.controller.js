@@ -34,6 +34,6 @@ exports.add_task = function (req, res) {
 exports.update_task = function (req, res) {
     Task.findOneAndUpdate({ '_id': req.params.id }, { $set: req.body }, (err, task) => {
         if (err) return next(err);
-        res.send('Task udpated.');
+        res.status(200).json({ 'task_id': req.params.id, 'status': 'Update successful' });
     });
 };

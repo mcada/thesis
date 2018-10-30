@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
+  startDate = new Date(1990, 1, 1);
 
   constructor() { }
 

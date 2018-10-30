@@ -1,8 +1,23 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span><mat-icon>mood</mat-icon></span>
+  <mat-toolbar-row >
+    <span><mat-icon>mood</mat-icon></span>  
+    <span>Yay, QEST2!</span> 
+    <span class="example-spacer"></span> 
+    
 
-    <span class="spacer">Yay, Material in Angular 2!</span>
+    <span>Start date:</span>    
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" placeholder="Choose an end date">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 startView="month"></mat-datepicker>
+    </mat-form-field>
+    
 
     <button mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>more_vert</mat-icon>
@@ -37,4 +52,23 @@
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
+
+  <mat-sidenav mode="side" position="end" opened>
+    <nav>
+      <div>
+        <button class="nav-button" mat-raised-button routerLink="/list">List</button>
+      </div>
+      <div>
+        <button class="nav-button" mat-raised-button routerLink="/create">Create</button>
+      </div>
+      <div>
+        <button class="nav-button" mat-raised-button routerLink="/edit/1">Edit</button>
+      </div>
+      <p>Employee veci</p>
+      <div>
+        <button class="nav-button" mat-raised-button routerLink="/employee/list">List</button>
+      </div>
+    </nav>
+  </mat-sidenav>
+
 </mat-sidenav-container>
