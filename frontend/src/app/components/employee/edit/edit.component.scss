@@ -1,0 +1,13 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3em;
+    margin-right: 3em;
+    border-style: dashed
+  }
+  
+  mat-form-field {
+    width: 80%;
+    margin-left: 3em;
+    margin-bottom: 2em;
+  }

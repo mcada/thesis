@@ -27,7 +27,8 @@ export class TaskService {
   }
 
   updateTask(task: Task): Observable<any> {
-    return this.http.put(this.config.backendUrl + task._id + '/update', task, httpOptions);
+    console.log(httpOptions);
+    return this.http.put(this.config.backendUrl + 'task/' + task._id + '/update', task, httpOptions);
   }
 
 }
