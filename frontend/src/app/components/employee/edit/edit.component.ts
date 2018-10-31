@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { Employee } from '../../../models/employee.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -15,7 +16,7 @@ export class EditComponent implements OnInit, OnDestroy {
 
   private sub: any;
 
-  constructor(private employeeService: EmployeeService, private route: ActivatedRoute) {}
+  constructor(private router: Router, private employeeService: EmployeeService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -33,8 +34,14 @@ export class EditComponent implements OnInit, OnDestroy {
 
   save(): void {
     console.log(this.employee);
-    this.employeeService.updateTask(this.employee)
-      .subscribe(returned => console.log(returned));
+    this.employeeService.updateEmployee(this.employee)
+      .subscribe((data) => {
+        console.log(data);
+        // Page redirect when getting response
+        this.router.navigate(['/employee/list']);
+      }, (error) => {
+        console.log("err", error);
+      });
   }
 
   ngOnDestroy(): void {

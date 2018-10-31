@@ -6,21 +6,21 @@
     </mat-card-title>
 
     <mat-card-content>
-      <form class="example-container">
+      <form #loginForm="ngForm" class="example-container">
         <mat-form-field class="firstFormField">
-          <input matInput placeholder="First name" [(ngModel)]="employee.first_name" name="first_name">
+          <input matInput placeholder="First name" [(ngModel)]="employee.first_name" name="first_name" required>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Last name" [(ngModel)]="employee.last_name" name="last_name">
+          <input matInput placeholder="Last name" [(ngModel)]="employee.last_name" name="last_name" required>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Nick" [(ngModel)]="employee.rhnick" name="rhnick">
+          <input matInput placeholder="Nick" [(ngModel)]="employee.rhnick" name="rhnick" required>
         </mat-form-field>
 
         <mat-form-field>
-          <mat-select placeholder="Position" [(ngModel)]="employee.position" name="position">
+          <mat-select placeholder="Position" [(ngModel)]="employee.position" name="position" required>
             <mat-option value="associate">Associate</mat-option>
             <mat-option value="engineer">Engineer</mat-option>
             <mat-option value="senior">Senior</mat-option>
@@ -29,19 +29,21 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Team Lead" [(ngModel)]="employee.team_lead" name="team_lead">
+          <input matInput placeholder="Team Lead" [(ngModel)]="employee.team_lead" name="team_lead" required>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Manager" [(ngModel)]="employee.manager" name="manager">
+          <input matInput placeholder="Manager" [(ngModel)]="employee.manager" name="manager" required>
         </mat-form-field>
 
       </form>
+
     </mat-card-content>
 
-    <button mat-raised-button (click)="save()">SAVE CHANGES</button>
+    <div class="submit-button">
+      <button mat-raised-button (click)="save()" [disabled]="loginForm.form.invalid">Create</button>
+    </div>
+    
   </mat-card>
-
-
 
 </div>

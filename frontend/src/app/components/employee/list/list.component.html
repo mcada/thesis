@@ -15,3 +15,11 @@
     <button class="card-button" mat-button [routerLink]="['/employee/edit', employee._id]">Details</button>
   </mat-card-actions>
 </mat-card>
+
+<mat-card [routerLink]="['/employee/create']" class="create-card">
+  <div class="uprostred">
+    <i mat-card-image class="material-icons add-icon">
+      note_add
+    </i>
+  </div>
+</mat-card>

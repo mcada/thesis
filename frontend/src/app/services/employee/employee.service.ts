@@ -26,8 +26,12 @@ export class EmployeeService {
     return this.http.get(this.config.backendUrl + 'employee/' + id );
   }
 
-  updateTask(employee: Employee): Observable<any> {
+  updateEmployee(employee: Employee): Observable<any> {
     return this.http.put(this.config.backendUrl + 'employee/' + employee._id + '/update', employee, httpOptions);
+  }
+
+  createEmployee(employee: Employee): Observable<any> {
+    return this.http.post(this.config.backendUrl + 'employee/add', employee, httpOptions);
   }
 
 }
