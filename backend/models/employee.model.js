@@ -9,7 +9,7 @@ let EmployeeSchema = new Schema({
     last_name: {
         type: String
     },
-    rh_nick: {
+    rhnick: {
         type: String
     },
     manager: {

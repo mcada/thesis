@@ -1,15 +1,17 @@
-<mat-nav-list>
-  <mat-list-item *ngFor="let employee of dataSource">
-     <a matLine >{{ employee.first_name }}</a>
-     <a matLine >{{ employee.last_name }}</a>
-     <a matLine >{{ employee.rhnick }}</a>
-     <a matLine >{{ employee.manager }}</a>
-     <a matLine >{{ employee.first_name }}</a>
-     <button mat-raised-button [routerLink]="['/employee/edit', employee._id]">Go To Details</button>
-
-    
-     <button mat-icon-button>
-        <mat-icon>info</mat-icon>
-     </button>
-  </mat-list-item>
-</mat-nav-list>
+<mat-card *ngFor="let employee of dataSource" class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{employee.first_name}}_{{employee.last_name}}</mat-card-title>
+    <mat-card-subtitle>{{employee.position}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      Manager: {{employee.manager}} <br>
+      Team Lead: {{employee.team_lead}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="card-button" mat-button [routerLink]="['/employee/edit', employee._id]">Details</button>
+  </mat-card-actions>
+</mat-card>

@@ -3,6 +3,7 @@ import { Review } from './review.model';
 
 
 export class Employee {
+    _id: String
     first_name: String
     last_name: String
     rhnick: String

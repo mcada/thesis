@@ -15,7 +15,7 @@ export class EditComponent implements OnInit, OnDestroy {
 
   private sub: any;
 
-  constructor(private employeeService: EmployeeService, private route: ActivatedRoute) { }
+  constructor(private employeeService: EmployeeService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -29,6 +29,12 @@ export class EditComponent implements OnInit, OnDestroy {
           console.log(this.employee);
         });
     });
+  }
+
+  save(): void {
+    console.log(this.employee);
+    this.employeeService.updateTask(this.employee)
+      .subscribe(returned => console.log(returned));
   }
 
   ngOnDestroy(): void {

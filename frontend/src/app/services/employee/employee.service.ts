@@ -2,6 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../config.service';
+import { HttpHeaders } from '@angular/common/http';
+import { Employee } from '../../models/employee.model';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +24,10 @@ export class EmployeeService {
 
   getEmployeeById(id: String): Observable<any> {
     return this.http.get(this.config.backendUrl + 'employee/' + id );
+  }
+
+  updateTask(employee: Employee): Observable<any> {
+    return this.http.put(this.config.backendUrl + 'employee/' + employee._id + '/update', employee, httpOptions);
   }
 
 }

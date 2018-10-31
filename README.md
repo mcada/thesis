@@ -40,3 +40,6 @@ naucit se jak funguje datepicker componenta z angular material, bude se hodit
 # memory-leaky:
 kazda komponenta co pouziva .subscribe musi implementovat OnDestroy interface
 a v OnDestroy lifecycle zavolat .unsubscribe, zatim to mam jen v employee edit komponente
+
+# employee list
+pridat mat-card ktera bude presmerovana na add-employee, to bude mit podobnou formu co edit, jen to bude posilat na jiny backend url aby se vytvoril employee :)

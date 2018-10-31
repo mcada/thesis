@@ -9,5 +9,25 @@
   mat-form-field {
     width: 80%;
     margin-left: 3em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
+  }
+
+  .firstFormField {
+    margin-top: 20px;
+  }
+
+  mat-card {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+  }
+
+  mat-card-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  matPrefix {
+    margin-right: 25px
   }

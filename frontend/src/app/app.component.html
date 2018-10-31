@@ -12,8 +12,10 @@
       <mat-datepicker #picker startView="year"></mat-datepicker>
     </mat-form-field>
 
+    <span>End date:</span>    
+
     <mat-form-field>
-      <input matInput [matDatepicker]="picker2" placeholder="Choose an end date">
+      <input matInput [matDatepicker]="picker2">
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2 startView="month"></mat-datepicker>
     </mat-form-field>

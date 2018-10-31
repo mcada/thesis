@@ -1,4 +1,5 @@
 export class Review {
+    _id: String
     date: Date
     total_points: Number
     feedback_manager: String

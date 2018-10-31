@@ -9,6 +9,14 @@ exports.get_employees = function (req, res) {
     });
 };
 
+exports.get_employee_by_id = function (req, res) {
+    Employee.findById(req.params.id, (err, employee) => {
+            if (err)
+                console.log(err);            
+            res.json(employee);
+        });
+};
+
 exports.get_employee_by_id_and_populate_tasks = function (req, res) {
     Employee
         .findById(req.params.id)
@@ -39,7 +47,7 @@ exports.add_employee = function (req, res) {
 exports.update_employee = function (req, res) {
     Employee.findOneAndUpdate({ '_id': req.params.id }, { $set: req.body }, (err, employee) => {
         if (err) return next(err);
-        res.send('Employee udpated.');
+        res.status(200).json({ 'employee': 'Updated successfully' });
     });
 };
 
