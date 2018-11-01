@@ -1,0 +1,19 @@
+mat-toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-style: outset;
+  border-color: gold;
+  border-bottom-style: outset;
+  border-bottom-color: gold;
+}
+
+mat-toolbar-row {
+  justify-content: space-between;
+}
+
+.current-period {
+    cursor: pointer;
+}

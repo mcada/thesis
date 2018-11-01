@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>
+      <mat-icon>mood</mat-icon>
+    </span>
+
+    <span class='current-period' [mat-menu-trigger-for]="menu" *ngIf="selectedConfig">Current period: {{selectedConfig.date_from | date: local}} - {{selectedConfig.date_to
+      | date: local}}</span>
+    <button mat-icon-button [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-menu [overlapTrigger]="false" #menu="matMenu">
+  <button mat-menu-item *ngFor="let config of configs" value={{config}} (click)="setConfig(config)">{{config.date_from
+    | date: local}} - {{config.date_to | date: local}}</button>
+</mat-menu>

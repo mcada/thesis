@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 const employee = require('./routes/employee.route');
 const task = require('./routes/task.route');
 const review = require('./routes/review.route');
+const config = require('./routes/config.route');
 
 //other imports
 const app = express();
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 app.use('/employee', employee);
 app.use('/task', task);
 app.use('/review', review);
+app.use('/config', config);
 //TODO: zjistit jesi vubec routu / potrebuji, podle me ne
 app.use('/', router);
 

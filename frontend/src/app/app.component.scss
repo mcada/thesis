@@ -15,17 +15,7 @@
     flex: 1 1 auto;
   }
 
-  mat-toolbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-style: outset;
-        border-color: gold;
-        border-bottom-style: outset;
-        border-bottom-color: gold;
-  }
+
 
   mat-sidenav {
       width: 12em;
@@ -43,9 +33,7 @@
     text-align: center;
   }
   
-  mat-toolbar-row {
-    justify-content: space-between;
-  }
+ 
 
   .nav-button {
     background-color: lightblue;

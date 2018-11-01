@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EditComponent } from './components/edit/edit.component';
 import { ListComponent } from './components/list/list.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -16,16 +15,19 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { EmployeeListComponent } from './components/employee/list/list.component';
 import { CreateComponent } from './components/employee/create/create.component';
 import { EditComponent as EditEmployeeComponent } from './components/employee/edit/edit.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ConfigComponent } from './components/config/config.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateComponent,
-    EditComponent,
     ListComponent,
     TaskListComponent,
     EmployeeListComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    ToolbarComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,

@@ -1,35 +1,4 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row >
-    <span><mat-icon>mood</mat-icon></span>  
-    <span>Yay, QEST2!</span> 
-    <span class="example-spacer"></span> 
-    
-
-    <span>Start date:</span>    
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker startView="year"></mat-datepicker>
-    </mat-form-field>
-
-    <span>End date:</span>    
-
-    <mat-form-field>
-      <input matInput [matDatepicker]="picker2">
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2 startView="month"></mat-datepicker>
-    </mat-form-field>
-    
-
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-  </mat-toolbar-row>
-</mat-toolbar>
-<mat-menu x-position="before" #menu="matMenu">
-  <button mat-menu-item>Option 1</button>
-  <button mat-menu-item>Option 2</button>
-</mat-menu>
+<app-toolbar></app-toolbar>
 
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" opened>
@@ -38,7 +7,7 @@
         <button class="nav-button" mat-raised-button routerLink="/list">List</button>
       </div>
       <div>
-        <button class="nav-button" mat-raised-button routerLink="/edit/1">Edit</button>
+        <button class="nav-button" mat-raised-button routerLink="/config">Settings</button>
       </div>
       <p>Employee veci</p>
       <div>
@@ -58,7 +27,7 @@
         <button class="nav-button" mat-raised-button routerLink="/list">List</button>
       </div>
       <div>
-        <button class="nav-button" mat-raised-button routerLink="/edit/1">Edit</button>
+        <button class="nav-button" mat-raised-button routerLink="/config">Settings</button>
       </div>
       <p>Employee veci</p>
       <div>
