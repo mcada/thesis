@@ -1,4 +1,6 @@
 import Employee from '../models/employee.model';
+import Config from '../models/config.model';
+import Review from '../models/review.model';
 
 exports.get_employees = function (req, res) {
     Employee.find(function (err, employees) {
@@ -35,8 +37,25 @@ exports.get_employee_by_id_and_populate_tasks = function (req, res) {
 
 exports.add_employee = function (req, res) {
     let employee = new Employee(req.body);
+    //TODO: PRO KAZDOU CONFIG PERIOD VYROB REVIEW A PRIRAD HO K DANEMU EMPLOYEE
     employee.save()
         .then(employee => {
+            // create empty reviews for every user
+            const stream = Config.find().stream();
+            // Print every document that matches the query, one at a time
+            stream.on('data', con => {
+                console.log(con._id);
+
+                let newReview = new Review();
+                newReview.owner = employee._id
+                newReview.period = con._id
+                newReview.total_points = 0
+                newReview.points_from_team_lead = 0
+                newReview.total_points_from_tasks = 0
+                newReview.feedback_manager = ''
+                newReview.feedback_team_lead= ''
+                newReview.save()
+            });
             res.status(200).json({ 'employee': 'Added successfully' });
         })
         .catch(err => {

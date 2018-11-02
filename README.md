@@ -36,6 +36,8 @@ zjistit jake promenne budu potrebovat globalne
         - na home page? specialni settings komponenta?
 
 naucit se jak funguje datepicker componenta z angular material, bude se hodit
+
+conditional css class to currently selected employee
     
 # memory-leaky:
 kazda komponenta co pouziva .subscribe musi implementovat OnDestroy interface
@@ -43,3 +45,12 @@ a v OnDestroy lifecycle zavolat .unsubscribe, zatim to mam jen v employee edit k
 
 # employee list
 pridat mat-card ktera bude presmerovana na add-employee, to bude mit podobnou formu co edit, jen to bude posilat na jiny backend url aby se vytvoril employee :)
+
+
+# current employee store
+misto predavani employee id udelat store ke kteremu pak budou mit
+vsechny komponenty pristup
+left side bar pak bude mit okynko kde budou nejake informace o momentalne
+zvolenem employee, task-list a review componenty k tomu budou mit pristup
+a podle toho zobrazi/zabarvi co bude treba ^^
+

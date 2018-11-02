@@ -6,6 +6,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import {
   MatButtonModule,
@@ -28,7 +31,6 @@ import {
   MatDialogModule,
   MatDividerModule,
   MatExpansionModule,
-  MatGridListModule,  
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatRadioModule,
@@ -36,9 +38,7 @@ import {
   MatSelectModule,
   MatSliderModule,
   MatSlideToggleModule,
-  MatSnackBarModule,
   MatStepperModule,
-  MatTabsModule,
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';

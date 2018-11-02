@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../../services/employee/employee.service';
 import { Employee } from '../../../models/employee.model';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit',
@@ -16,7 +17,7 @@ export class EditComponent implements OnInit, OnDestroy {
 
   private sub: any;
 
-  constructor(private router: Router, private employeeService: EmployeeService, private route: ActivatedRoute) {}
+  constructor(public snackBar: MatSnackBar, private router: Router, private employeeService: EmployeeService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -37,6 +38,9 @@ export class EditComponent implements OnInit, OnDestroy {
     this.employeeService.updateEmployee(this.employee)
       .subscribe((data) => {
         console.log(data);
+        this.snackBar.open('Employee updated', 'OK', {
+          duration: 3000,
+        });
         // Page redirect when getting response
         this.router.navigate(['/employee/list']);
       }, (error) => {

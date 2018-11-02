@@ -4,6 +4,8 @@ import { Task } from '../../models/task.model';
 import { MaterialModule } from '../../material.module';
 import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
+
 
 @Component({
   selector: 'app-task-list',
@@ -17,7 +19,7 @@ export class TaskListComponent implements OnInit {
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['position', 'description', 'jira', 'date', 'bonus_points', 'action'];
 
-  constructor(private taskService: TaskService) { }
+  constructor(public snackBar: MatSnackBar, private taskService: TaskService) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -36,6 +38,11 @@ export class TaskListComponent implements OnInit {
   updateTask(task: Task) {
     console.log(task);
     this.taskService.updateTask(task)
-      .subscribe(returned => console.log(returned));
+      .subscribe(returned => {
+        this.snackBar.open('Task updated', 'OK', {
+          duration: 1000,
+        });
+        console.log(returned)
+      });
   }
 }

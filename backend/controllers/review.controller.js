@@ -2,11 +2,19 @@ import Review from '../models/review.model';
 import Employee from '../models/employee.model';
 
 exports.get_reviews = function (req, res) {
-    Review.find(function (err, reviews) {
+    Review.find({ period: req.params.periodid }).sort({ total_points: 'desc' }).exec(function (err, reviews) {
         if (err)
             console.log(err);
         else
             res.json(reviews);
+    });
+};
+
+exports.get_review_by_owner_id = function (req, res) {
+    Review.find({ period: req.params.periodid, owner: req.params.id }, (err, review) => {
+        if (err)
+            console.log(err);
+        res.json(review);
     });
 };
 

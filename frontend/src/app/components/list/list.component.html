@@ -1,18 +1,11 @@
-<div> 
-
-  <mat-card>
-    <button mat-button>All</button>
-    <button mat-raised-button>Of</button>
-    <button mat-raised-button color="primary">The</button>
-    <button mat-raised-button color="accent">Buttons</button>
-  </mat-card>
-
-  <span class="done">
-    <button mat-fab>
-      <mat-icon>check circle</mat-icon>
-    </button>
-  </span>
-</div>
-
-
-<app-task-list taskId='nereknu'></app-task-list>
+<mat-tab-group>
+  <mat-tab label="First">
+    <app-edit></app-edit>
+  </mat-tab>
+  <mat-tab label="Second">
+    <app-task-list taskId='nereknu'></app-task-list>
+  </mat-tab>
+  <mat-tab label="Third">
+    <app-review-edit></app-review-edit>
+  </mat-tab>
+</mat-tab-group>

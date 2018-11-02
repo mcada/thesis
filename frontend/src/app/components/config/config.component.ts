@@ -31,21 +31,21 @@ export class ConfigComponent implements OnInit {
   }
 
   deleteConfig(config: Config) {
-    this.configService.deleteConfig(config)
-      .subscribe((data) => {
-        console.log(data);
-        this.configService.updateConfigs()
-      }, (error) => {
-        console.log("err", error);
-      });
-
+    if (window.confirm('Are sure you want to delete this period? All reviews will be deleted with it.')) {
+      this.configService.deleteConfig(config)
+        .subscribe((data) => {
+          console.log(data);
+          this.configService.updateConfigs()
+        }, (error) => {
+          console.log("err", error);
+        });
+    }
   }
 
   createConfig() {
     var newConfig: Config = new Config();
     newConfig.date_from = this.newFrom;
     newConfig.date_to = this.newTo;
-    newConfig.current_employee_id = this.currentConfig.current_employee_id;
 
     this.newFrom = undefined;
     this.newTo = undefined;

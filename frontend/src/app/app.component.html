@@ -1,11 +1,8 @@
 <app-toolbar></app-toolbar>
 
 <mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>
+  <mat-sidenav class=left-nav mode="side" opened>
     <nav>
-      <div>
-        <button class="nav-button" mat-raised-button routerLink="/list">List</button>
-      </div>
       <div>
         <button class="nav-button" mat-raised-button routerLink="/config">Settings</button>
       </div>
@@ -21,19 +18,8 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 
-  <mat-sidenav mode="side" position="end" opened>
-    <nav>
-      <div>
-        <button class="nav-button" mat-raised-button routerLink="/list">List</button>
-      </div>
-      <div>
-        <button class="nav-button" mat-raised-button routerLink="/config">Settings</button>
-      </div>
-      <p>Employee veci</p>
-      <div>
-        <button class="nav-button" mat-raised-button routerLink="/employee/list">List</button>
-      </div>
-    </nav>
+  <mat-sidenav class=right-nav mode="side" position="end" opened>
+    <app-review-list></app-review-list>
   </mat-sidenav>
 
 </mat-sidenav-container>

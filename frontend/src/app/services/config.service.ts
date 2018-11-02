@@ -5,10 +5,12 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { ReviewService } from './review/review.service';
+import {MatSnackBar} from '@angular/material';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
   })
 };
 
@@ -27,38 +29,57 @@ export class ConfigService {
   private allConfigs = new BehaviorSubject(null);
   public allConfigs$ = this.allConfigs.asObservable();
 
-  constructor(private http: HttpClient) {
-    this.getCurrentConfig()
+  // Subscribe data
+  private reviews = new BehaviorSubject(null);
+  public reviews$ = this.reviews.asObservable();
+
+  constructor(public snackBar: MatSnackBar, private http: HttpClient) {
+    this.initializeConfig()
     this.updateConfigs()
-    
+
   }
 
-  getCurrentConfig() {
-    return of({_id : '1',
-    current_employee_id: '5bc07de6d2f53d92ff4f484b',
-    date_from: new Date("2015/03/25"),
-    date_to: new Date("2015/05/25")}).subscribe(data => {
-        this.currentConfig.next(data); // <<== added
+  initializeConfig() {
+    //TODO: find out how to initialize current config and distribute it 
+    //      to all subjects (google ReplaySubject?)
+    return of({
+      _id: '1',
+      current_employee_id: '5bc07de6d2f53d92ff4f484b',
+      date_from: new Date("2015/03/25"),
+      date_to: new Date("2015/05/25")
+    }).subscribe(data => {
+      this.currentConfig.next(data); // <<== added
       // do something else
-    }) 
+    })
   }
 
   updateConfigs() {
     this.http.get(this.backendUrl + 'config').subscribe(data => {
-      this.allConfigs.next(data)
+      this.allConfigs.next(data)      
     })
   }
 
   setCurrentConfig(config: Config) {
     console.log('setting another config: ' + config)
+    this.snackBar.open('Current period changed', 'OK', {
+      duration: 3000,
+    });
     this.currentConfig.next(config)
+    this.updateReviews(config._id)
+  }
+
+  updateReviews(configId: String) {
+    this.http.get(this.backendUrl + 'review/' + configId)
+      .subscribe(data => {
+        this.reviews.next(data)
+      })
   }
 
   deleteConfig(config: Config) {
     return this.http.delete(this.backendUrl + 'config/' + config._id + '/delete');
   }
 
-  createConfig(config: Config): Observable<any>  {
+  createConfig(config: Config): Observable<any> {
     return this.http.post(this.backendUrl + 'config/add', config, httpOptions);
   }
 

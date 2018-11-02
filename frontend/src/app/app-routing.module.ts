@@ -7,10 +7,10 @@ import { EditComponent as EditEmployeeComponent } from './components/employee/ed
 import { ConfigComponent } from './components/config/config.component';
 
 const routes: Routes = [
-  { path: 'list', component: ListComponent },
+  { path: 'list/:id', component: ListComponent },
   { path: 'config', component: ConfigComponent },
 
-  { path: '', redirectTo: '/list', pathMatch: 'full'},
+  { path: '', redirectTo: '/config', pathMatch: 'full'},
 
   { path: 'employee/list', component: EmployeeListComponent },
   { path: 'employee/edit/:id', component: EditEmployeeComponent },

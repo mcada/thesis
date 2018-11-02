@@ -17,6 +17,8 @@ import { CreateComponent } from './components/employee/create/create.component';
 import { EditComponent as EditEmployeeComponent } from './components/employee/edit/edit.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ConfigComponent } from './components/config/config.component';
+import { ReviewListComponent } from './components/review/review-list/review-list.component';
+import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ConfigComponent } from './components/config/config.component';
     EmployeeListComponent,
     EditEmployeeComponent,
     ToolbarComponent,
-    ConfigComponent
+    ConfigComponent,
+    ReviewListComponent,
+    ReviewEditComponent
   ],
   imports: [
     BrowserModule,

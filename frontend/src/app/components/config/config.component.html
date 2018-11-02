@@ -25,24 +25,37 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <div class="add-new-row">
+  <div>
 
     <form #addNew="ngForm" class="example-container">
-      <span>Start date:</span>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" name="from" [(ngModel)]="newFrom" required>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker startView="year"></mat-datepicker>
-      </mat-form-field>
+      <mat-grid-list cols="8" rowHeight="4em">
+        <mat-grid-tile><span>Start date:</span></mat-grid-tile>
+        <mat-grid-tile colspan=2>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" name="from" [(ngModel)]="newFrom" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="year"></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile><span>End date:</span></mat-grid-tile>
+        <mat-grid-tile colspan=2>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker2" name="to" [(ngModel)]="newTo" required>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 startView="month"></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile colspan=2>
+          <button mat-raised-button (click)="createConfig()" [disabled]="addNew.form.invalid">Add new period</button>
+        </mat-grid-tile>
+      </mat-grid-list>
 
-      <span>End date:</span>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker2" name="to" [(ngModel)]="newTo" required>
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2 startView="month"></mat-datepicker>
-      </mat-form-field>
 
-      <button mat-raised-button (click)="createConfig()" [disabled]="addNew.form.invalid">Add</button>
+
+
+
+
+
 
     </form>
 

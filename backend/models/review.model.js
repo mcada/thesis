@@ -3,9 +3,6 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 let ReviewSchema = new Schema({
-    date: {
-        type: Date
-    },
     total_points: {
         type: Number
     },
@@ -24,6 +21,11 @@ let ReviewSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'Employee',
+        required: true
+    },
+    period: {
+        type: Schema.Types.ObjectId,
+        ref: 'Config',
         required: true
     }
 });
