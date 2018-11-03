@@ -44,9 +44,8 @@ export class ConfigService {
     //      to all subjects (google ReplaySubject?)
     return of({
       _id: '1',
-      current_employee_id: '5bc07de6d2f53d92ff4f484b',
       date_from: new Date("2015/03/25"),
-      date_to: new Date("2015/05/25")
+      date_to: new Date("2019/05/25")
     }).subscribe(data => {
       this.currentConfig.next(data); // <<== added
       // do something else
@@ -55,7 +54,8 @@ export class ConfigService {
 
   updateConfigs() {
     this.http.get(this.backendUrl + 'config').subscribe(data => {
-      this.allConfigs.next(data)      
+      this.allConfigs.next(data)
+      //this.currentConfig.next(data[0])
     })
   }
 

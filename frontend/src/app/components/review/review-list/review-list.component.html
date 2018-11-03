@@ -1,5 +1,12 @@
-<mat-list role="list">
-  <mat-list-item [routerLink]="['/list', item.owner]" *ngFor="let item of reviews" role="listitem">
-    {{item.total_points}} ma {{item.owner}}
-  </mat-list-item>
-</mat-list>
+
+<div class='top-margin'>
+    <mat-grid-list [routerLink]="['/list', item.owner._id]" *ngFor="let item of reviews" role="listitem" cols="5" rowHeight=3em>
+      <mat-grid-tile colspan=4>
+        {{item.owner.last_name}} {{item.owner.first_name}}
+      </mat-grid-tile>
+      <mat-grid-tile colspan=1>
+        {{item.total_points}}
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>

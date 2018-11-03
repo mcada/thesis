@@ -49,3 +49,35 @@
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
+
+
+<mat-card class='add-task'>
+  <mat-card-header>Add new task</mat-card-header>
+  <form #addNew="ngForm" class="example-container">
+    <mat-form-field class="firstFormField">
+      <textarea matInput placeholder="Description" [(ngModel)]="task_description" name="task_description" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Managers note" [(ngModel)]="task_managers_note" name="task_managers_note"
+        required></textarea>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput placeholder="Task date" [matDatepicker]="picker" name="date" [(ngModel)]="task_date" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="month"></mat-datepicker>
+    </mat-form-field>
+
+
+    <div class='slider-input'>
+      <span opacity='0.5'>Bonus points:</span>
+      <mat-slider thumbLabel min="0" max="3" step="1" value="0" name='bonus_points' [(ngModel)]="task_points"></mat-slider>
+    </div>
+
+  </form>
+  <div class='submit-button'>
+    <button mat-raised-button (click)="createTask()" [disabled]="addNew.form.invalid">Add new task</button>
+  </div>
+</mat-card>

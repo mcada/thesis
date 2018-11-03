@@ -1,19 +1,57 @@
 table {
-    width: 100%;
-  }
+  width: 100%;
+}
 
-  th.mat-sort-header-sorted {
-    color: black;
-  }  
+th.mat-sort-header-sorted {
+  color: black;
+}
 
 .mat-elevation-z8 {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nadpis {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.add-task {
+  margin-top: 5em;
+  margin-bottom: 10em;
+  width: 40%;
+  background: rgb(84, 228, 238);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.firstFormField {
+  margin-top: 20px;
+}
+
+mat-form-field {
+  width: 80%;
+  margin-left: 3em;
+  margin-bottom: 1em;
+}
+
+.submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-input {
+  width: 80%;
+  margin-left: 3em;
+  margin-bottom: 1em;
+}
+
+mat-slider {
+  width: 80%;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
 }

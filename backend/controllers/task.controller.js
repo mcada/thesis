@@ -1,10 +1,21 @@
 import Task from '../models/task.model';
 import Employee from '../models/employee.model';
 
+var ObjectID = require('mongodb').ObjectID;
+
 exports.get_tasks = function (req, res) {
     Task.find(function (err, tasks) {
         if (err)
             console.log(err);
+        else
+            res.json(tasks);
+    });
+};
+
+exports.get_employee_task_in_date = function (req, res) {    
+    Task.find({date: { "$gte": new Date(req.params.from), "$lt": new Date(req.params.to)}, owner: new ObjectID(req.params.owner) }, (err, tasks) => {
+        if (err)
+            console.log(err);        
         else
             res.json(tasks);
     });

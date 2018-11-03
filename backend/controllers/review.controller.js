@@ -2,7 +2,7 @@ import Review from '../models/review.model';
 import Employee from '../models/employee.model';
 
 exports.get_reviews = function (req, res) {
-    Review.find({ period: req.params.periodid }).sort({ total_points: 'desc' }).exec(function (err, reviews) {
+    Review.find({ period: req.params.periodid }).sort({ total_points: 'desc' }).populate('owner').exec(function (err, reviews) {
         if (err)
             console.log(err);
         else
@@ -22,7 +22,7 @@ exports.add_review = function (req, res) {
     let rev = new Review(req.body);
     rev.save()
         .then(rev => {
-            //uloz task id ownerovi do array
+            //uloz review id ownerovi do array
             Employee.findOneAndUpdate({ _id: rev.owner }, { $push: { reviews: rev._id } },
                 function (error, success) {
                     if (error) {

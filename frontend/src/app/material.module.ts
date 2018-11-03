@@ -9,6 +9,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatSliderModule} from '@angular/material/slider';
 
 import {
   MatButtonModule,
@@ -36,7 +37,6 @@ import {
   MatRadioModule,
   MatRippleModule,
   MatSelectModule,
-  MatSliderModule,
   MatSlideToggleModule,
   MatStepperModule,
   MatTooltipModule,

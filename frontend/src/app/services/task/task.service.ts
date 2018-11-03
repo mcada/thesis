@@ -5,10 +5,11 @@ import { ConfigService } from '../config.service';
 import { Task } from '../../models/task.model';
 import { HttpHeaders } from '@angular/common/http';
 import { TASKS } from '../../models/mock-tasks';
+import { Config } from 'src/app/models/config.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
   })
 };
 
@@ -16,13 +17,19 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TaskService {
+  currentConfig: Config;
 
-  
 
-  constructor(private http: HttpClient, private config: ConfigService) { }
 
-  getTasks(): Observable<any> {
-    return this.http.get(this.config.backendUrl + 'task');
+  constructor(private http: HttpClient, private config: ConfigService) {
+    config.currentConfig$.subscribe(data => {
+      this.currentConfig = data;
+    })
+  }
+
+  getTasks(owner: String): Observable<any> {
+    console.log('here')
+    return this.http.get(this.config.backendUrl + 'task/' + owner + '/' + this.currentConfig.date_from + '/' + this.currentConfig.date_to);
     //return of(TASKS);
   }
 
