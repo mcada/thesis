@@ -40,6 +40,8 @@
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
         <button class="nav-button" mat-raised-button (click)="updateTask(element)">Save</button>
+        <button class="nav-button" mat-raised-button (click)="deleteTask(element._id)">Delete</button>
+
       </td>
     </ng-container>
 
@@ -67,7 +69,7 @@
     <mat-form-field>
       <input matInput placeholder="Task date" [matDatepicker]="picker" name="date" [(ngModel)]="task_date" required>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker startView="month"></mat-datepicker>
+      <mat-datepicker #picker startView="year"></mat-datepicker>
     </mat-form-field>
 
 

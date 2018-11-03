@@ -19,21 +19,6 @@ exports.get_employee_by_id = function (req, res) {
         });
 };
 
-exports.get_employee_by_id_and_populate_tasks = function (req, res) {
-    Employee
-        .findById(req.params.id)
-        .populate('tasks')
-        .exec((err, employee) => {
-            if (err)
-                console.log(err);
-            else
-                employee.tasks.forEach(e => {
-                    console.log('found task with description: ' + e.description);
-                    console.log('       bonus points: ' + e.bonus_points);
-                });
-            res.json(employee);
-        });
-};
 
 exports.add_employee = function (req, res) {
     let employee = new Employee(req.body);

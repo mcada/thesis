@@ -62,12 +62,36 @@ export class TaskListComponent implements OnInit {
 
   createTask() {
     var newTask = new Task();
-    newTask.date=this.task_date;
-    newTask.description=this.task_description;
-    newTask.owner=this.employeeId;
-    newTask.bonus_points=this.task_points;
-    newTask.managers_note=this.task_managers_note;
-    
-    console.log(newTask)
+    newTask.date = this.task_date;
+    newTask.description = this.task_description;
+    newTask.owner = this.employeeId;
+    newTask.bonus_points = this.task_points;
+    newTask.managers_note = this.task_managers_note;
+
+    this.taskService.createTask(newTask)
+      .subscribe(returned => {
+        this.snackBar.open('Task created', 'OK', {
+          duration: 2000,
+        });
+        console.log(returned)
+
+        this.taskService.getTasks(this.employeeId)
+          .subscribe(tasks => this.dataSource.data = tasks);
+      });
+  }
+
+  deleteTask(task_id: String) {
+    console.log(task_id);
+    this.taskService.deleteTask(task_id)
+      .subscribe(returned => {
+        this.snackBar.open('Task deleted', 'OK', {
+          duration: 1000,
+        });
+        console.log(returned)
+        //TODO: better would be to filter table datasource for the task and remove it so there 
+        //      will be no need for another http call
+        this.taskService.getTasks(this.employeeId)
+          .subscribe(tasks => this.dataSource.data = tasks);
+      });
   }
 }

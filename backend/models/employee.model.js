@@ -21,12 +21,6 @@ let EmployeeSchema = new Schema({
     position: {
         type: String,
         enum: ['associate', 'engineer', 'senior', 'principal']
-    },
-    tasks: {
-        type: [{ type: Schema.Types.ObjectId, ref: 'Task' }]
-    },
-    reviews: {
-        type: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
     }
 });
 

@@ -10,6 +10,4 @@ export class Employee {
     manager: String
     team_lead: String
     position: String
-    tasks: Task[]
-    reviews: Review[]
 }

@@ -20,22 +20,11 @@ exports.get_review_by_owner_id = function (req, res) {
 
 exports.add_review = function (req, res) {
     let rev = new Review(req.body);
-    rev.save()
-        .then(rev => {
-            //uloz review id ownerovi do array
-            Employee.findOneAndUpdate({ _id: rev.owner }, { $push: { reviews: rev._id } },
-                function (error, success) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        console.log(success);
-                    }
-                });
-            res.status(200).json({ 'rev': 'Added successfully' });
-        })
-        .catch(err => {
-            res.status(400).send('Failed to create new record');
-        });
+    rev.save((err, review) => {
+        if (err)
+            console.log(err);
+        res.json('Review created');
+    });
 };
 
 exports.update_review = function (req, res) {

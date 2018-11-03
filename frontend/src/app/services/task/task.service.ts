@@ -30,11 +30,17 @@ export class TaskService {
   getTasks(owner: String): Observable<any> {
     console.log('here')
     return this.http.get(this.config.backendUrl + 'task/' + owner + '/' + this.currentConfig.date_from + '/' + this.currentConfig.date_to);
-    //return of(TASKS);
   }
 
   updateTask(task: Task): Observable<any> {
     return this.http.put(this.config.backendUrl + 'task/' + task._id + '/update', task, httpOptions);
   }
 
+  createTask(task: Task): Observable<any> {
+    return this.http.post(this.config.backendUrl + 'task/add', task, httpOptions);
+  }
+
+  deleteTask(task_id: String) {
+    return this.http.delete(this.config.backendUrl + 'task/' + task_id + '/delete');
+  }
 }
