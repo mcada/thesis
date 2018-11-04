@@ -5,13 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TaskListComponent } from './components/task-list/task-list.component';
+import { TaskListComponent } from './components/task/task-list/task-list.component';
+import { CreateComponent as CreateTaskComponent } from './components/task/create/create.component';
 import { EmployeeListComponent } from './components/employee/list/list.component';
 import { CreateComponent } from './components/employee/create/create.component';
 import { EditComponent as EditEmployeeComponent } from './components/employee/edit/edit.component';
@@ -31,7 +32,8 @@ import { ReviewEditComponent } from './components/review/review-edit/review-edit
     ToolbarComponent,
     ConfigComponent,
     ReviewListComponent,
-    ReviewEditComponent
+    ReviewEditComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -46,5 +48,5 @@ import { ReviewEditComponent } from './components/review/review-edit/review-edit
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {  
- }
+export class AppModule {
+}

@@ -16,16 +16,21 @@
     margin-top: 20px;
   }
 
-  mat-card {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-  }
-
   mat-card-title {
+    text-align: center;
+    height: 2em;
+  }
+  
+  mat-card-content {
+    padding-top: 35px;
+  }
+  
+  mat-card {
+    width: 90%;
+    margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
+    background: #c2e3b1;
   }
 
   .submit-button {

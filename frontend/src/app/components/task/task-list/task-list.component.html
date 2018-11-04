@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-title>Tasks of user {{employeeId}}</mat-card-title>
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+
+    <mat-expansion-panel *ngFor="let task of tasks">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{task.date | date: shortDate}} - {{task.description}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <a *ngIf="task.jira_link" href="{{task.jira_link}}">Jira link</a>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-card class='card-inside'>
+        <form #updateTaskForm="ngForm" class="example-container">
+          <mat-form-field class="firstFormField">
+            <textarea matInput placeholder="Description" [(ngModel)]="task.description" name="task_description"
+              required></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput placeholder="Managers note" [(ngModel)]="task.managers_note" name="task_managers_note"></textarea>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Jira link" [(ngModel)]="task.jira_link" name="task_jira">
+          </mat-form-field>
+
+
+
+          <div class='slider-input'>
+            <span>Bonus points:</span>
+            <mat-slider thumbLabel min="0" max="3" step="1" value="0" name='bonus_points' [(ngModel)]="task.bonus_points"></mat-slider>
+          </div>
+
+        </form>
+        <div class='submit-button'>
+          <button class='space-right' mat-raised-button (click)="updateTask(task)" [disabled]="updateTaskForm.form.invalid">Update</button>
+          <button mat-raised-button (click)="deleteTask(task._id)">Delete</button>
+
+        </div>
+      </mat-card>
+
+    </mat-expansion-panel>
+
+  </mat-card-content>
+</mat-card>

@@ -57,5 +57,43 @@ mat-slider {
 }
 
 .mat-column-action {
-    width: 33%;
-  }
+  width: 33%;
+}
+
+mat-card {
+  width: 90%;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #c2e3b1;
+}
+
+.card-inside {
+  background: #bacdaf;
+}
+
+mat-expansion-panel {
+  margin-bottom: 5px;
+  background: #a695ba;
+}
+
+mat-panel-title {
+  width: 60%;
+  max-width: 60%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.space-right {
+  margin-right: 10px;
+}
+
+mat-card-title {
+  text-align: center;
+  height: 2em;
+}
+
+mat-card-content {
+  padding-top: 35px;
+}

@@ -7,8 +7,6 @@
   margin-top: 4em;
   border-left-style: outset;
   border-right-style: outset;
-
-  border-color: gold;
 }
 
 .example-spacer {
@@ -16,8 +14,7 @@
 }
 
 mat-sidenav {
-  
-  background: darkcyan;
+  background: #efbac6;
 }
 
 .right-nav {
@@ -34,7 +31,6 @@ mat-sidenav {
 
 mat-sidenav-content {
   border-left-style: solid;
-  border-color: gold;
 }
 
 mat-card {
@@ -44,8 +40,7 @@ mat-card {
 }
 
 .nav-button {
-  background-color: lightblue;
-  color: #ffffff;
+  background-color: #fff1c7;
   padding: 10px;
   border-radius: 10px;
   -moz-border-radius: 10px;

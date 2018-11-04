@@ -10,6 +10,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import {
   MatButtonModule,
@@ -31,7 +32,6 @@ import {
   MatChipsModule,
   MatDialogModule,
   MatDividerModule,
-  MatExpansionModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
   MatRadioModule,

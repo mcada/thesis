@@ -4,6 +4,7 @@
     <mat-card-title>
       Selected employee is: {{ employee.first_name }}
     </mat-card-title>
+    <mat-divider></mat-divider>
 
     <mat-card-content>
       <form #loginForm="ngForm" class="example-container">
@@ -20,7 +21,8 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-select placeholder="Position" disableOptionCentering [(ngModel)]="employee.position" name="position" required>
+          <mat-select placeholder="Position" disableOptionCentering [(ngModel)]="employee.position" name="position"
+            required>
             <mat-option value="associate">Associate</mat-option>
             <mat-option value="engineer">Engineer</mat-option>
             <mat-option value="senior">Senior</mat-option>
@@ -41,10 +43,9 @@
     </mat-card-content>
 
     <div class="submit-button">
-      <button mat-raised-button (click)="save()" [disabled]="loginForm.form.invalid">Update</button>
+      <button mat-raised-button class='space-right' (click)="save()" [disabled]="loginForm.form.invalid">Update</button>
       <button mat-raised-button (click)="delete()">DELETE</button>
     </div>
-    
   </mat-card>
 
 </div>
