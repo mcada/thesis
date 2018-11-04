@@ -29,7 +29,10 @@ export class ReviewService {
   }
 
   getReviewById(id: String): Observable<any> {
-    console.log('tu som')
     return this.http.get(this.config.backendUrl + 'review/' + id + '/' + this.currentConfig._id );
   }  
+
+  updateReview(review: Review): Observable<any> {
+    return this.http.put(this.config.backendUrl + 'review/' + review._id + '/update', review, httpOptions);
+  }
 }

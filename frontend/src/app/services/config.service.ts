@@ -43,7 +43,7 @@ export class ConfigService {
     //TODO: find out how to initialize current config and distribute it 
     //      to all subjects (google ReplaySubject?)
     return of({
-      _id: '1',
+      _id: '5bdb8f6b068b4f3a085743fb',
       date_from: new Date("2015/03/25"),
       date_to: new Date("2019/05/25")
     }).subscribe(data => {

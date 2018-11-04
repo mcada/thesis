@@ -1,3 +1,24 @@
-<p>
-  {{review|json}}
-</p>
+<mat-card *ngIf="review" class='review'>
+  <mat-card-header>Update review</mat-card-header>
+  <form #finalReview="ngForm" class="example-container">
+    <mat-form-field class="firstFormField">
+      <textarea rows="5" matInput placeholder="Managers feedback" value='{{review.feedback_manager}}' [(ngModel)]="review.feedback_manager"
+        name="feedback_manager"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea rows="5" matInput placeholder="Team lead feedback" value='{{review.feedback_team_lead}}' [(ngModel)]="review.feedback_team_lead"
+        name="feedback_team_lead"></textarea>
+    </mat-form-field>
+
+    <div class='slider-input'>
+      <span>Points from team lead:</span>
+      <mat-slider thumbLabel min="0" max="5" step="1" value='{{review.points_from_team_lead}}' name='points_from_team_lead'
+        [(ngModel)]="review.points_from_team_lead"></mat-slider>
+    </div>
+    <div class='submit-button'>
+      <button mat-raised-button (click)="updateReview()" [disabled]="finalReview.form.invalid">Update review</button>
+    </div>
+  </form>
+
+</mat-card>

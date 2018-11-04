@@ -1,5 +1,5 @@
 <h2 class=nadpis>TASKS</h2>
-<p class=nadpis> of user {{ taskId }}</p>
+<p class=nadpis> of user {{ employeeId }}</p>
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort matSortActive="bonus" matSortDirection="desc">
@@ -61,8 +61,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <textarea matInput placeholder="Managers note" [(ngModel)]="task_managers_note" name="task_managers_note"
-        required></textarea>
+      <textarea matInput placeholder="Managers note" [(ngModel)]="task_managers_note" name="task_managers_note"></textarea>
     </mat-form-field>
 
 

@@ -11,7 +11,7 @@ exports.get_reviews = function (req, res) {
 };
 
 exports.get_review_by_owner_id = function (req, res) {
-    Review.find({ period: req.params.periodid, owner: req.params.id }, (err, review) => {
+    Review.findOne({ period: req.params.periodid, owner: req.params.id }, (err, review) => {
         if (err)
             console.log(err);
         res.json(review);
@@ -29,7 +29,8 @@ exports.add_review = function (req, res) {
 
 exports.update_review = function (req, res) {
     Review.findOneAndUpdate({ '_id': req.params.id }, { $set: req.body }, (err, task) => {
-        if (err) return next(err);
-        res.send('Review udpated.');
+        if (err) 
+            console.log(err);
+        res.json('Review udpated.');
     });
 };

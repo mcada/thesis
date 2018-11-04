@@ -78,6 +78,11 @@ export class TaskListComponent implements OnInit {
         this.taskService.getTasks(this.employeeId)
           .subscribe(tasks => this.dataSource.data = tasks);
       });
+
+    this.task_date = undefined;
+    this.task_description = undefined;
+    this.task_points = undefined;
+    this.task_managers_note = undefined;
   }
 
   deleteTask(task_id: String) {

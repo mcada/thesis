@@ -23,11 +23,23 @@ export class ReviewEditComponent implements OnInit {
       console.log('id: ' + this.id);
       // In a real app: dispatch action to load the details here.
       this.reviewService.getReviewById(this.id)
-        .subscribe(employee => {
-          this.review = employee;
+        .subscribe(rev => {
+          this.review = rev;
           console.log(this.review);
         });
     });
+  }
+
+  updateReview() {
+    console.log('updating review')
+    console.log(this.review)
+    this.reviewService.updateReview(this.review)
+      .subscribe(res => {
+        console.log(res);
+        this.snackBar.open('Task deleted', 'OK', {
+          duration: 1000,
+        });
+      });
   }
 
 }
