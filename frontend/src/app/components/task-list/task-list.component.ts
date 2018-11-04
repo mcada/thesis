@@ -86,17 +86,20 @@ export class TaskListComponent implements OnInit {
   }
 
   deleteTask(task_id: String) {
-    console.log(task_id);
-    this.taskService.deleteTask(task_id)
-      .subscribe(returned => {
-        this.snackBar.open('Task deleted', 'OK', {
-          duration: 1000,
+    if (window.confirm('Are sure you want to delete this task?')) {
+
+      console.log(task_id);
+      this.taskService.deleteTask(task_id)
+        .subscribe(returned => {
+          this.snackBar.open('Task deleted', 'OK', {
+            duration: 1000,
+          });
+          console.log(returned)
+          //TODO: better would be to filter table datasource for the task and remove it so there 
+          //      will be no need for another http call
+          this.taskService.getTasks(this.employeeId)
+            .subscribe(tasks => this.dataSource.data = tasks);
         });
-        console.log(returned)
-        //TODO: better would be to filter table datasource for the task and remove it so there 
-        //      will be no need for another http call
-        this.taskService.getTasks(this.employeeId)
-          .subscribe(tasks => this.dataSource.data = tasks);
-      });
+    }
   }
 }

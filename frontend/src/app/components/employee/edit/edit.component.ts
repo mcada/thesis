@@ -48,6 +48,22 @@ export class EditComponent implements OnInit, OnDestroy {
       });
   }
 
+  delete() {
+    if (window.confirm('Are sure you want to delete this employee? All reviews and tasks will also be deleted.')) {
+      this.employeeService.deleteEmployee(this.employee._id)
+        .subscribe((data) => {
+          console.log(data);
+          this.snackBar.open('Employee deleted', 'OK', {
+            duration: 3000,
+          });
+          // Page redirect when getting response
+          this.router.navigate(['/employee/list']);
+        }, (error) => {
+          console.log("err", error);
+        });
+    }
+  }
+
   ngOnDestroy(): void {
     this.sub.unsubscribe()
   }

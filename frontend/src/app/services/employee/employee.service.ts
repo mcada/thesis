@@ -34,4 +34,8 @@ export class EmployeeService {
     return this.http.post(this.config.backendUrl + 'employee/add', employee, httpOptions);
   }
 
+  deleteEmployee(employee_id: String) {
+    return this.http.delete(this.config.backendUrl + 'employee/' + employee_id + '/delete');
+  }
+
 }

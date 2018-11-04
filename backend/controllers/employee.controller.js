@@ -1,6 +1,8 @@
 import Employee from '../models/employee.model';
 import Config from '../models/config.model';
 import Review from '../models/review.model';
+import Task from '../models/task.model';
+var ObjectID = require('mongodb').ObjectID;
 
 exports.get_employees = function (req, res) {
     Employee.find(function (err, employees) {
@@ -50,16 +52,29 @@ exports.add_employee = function (req, res) {
 
 exports.update_employee = function (req, res) {
     Employee.findOneAndUpdate({ '_id': req.params.id }, { $set: req.body }, (err, employee) => {
-        if (err) return next(err);
+        if (err) {
+            console.log(err);
+            res.status(404)
+        }
         res.status(200).json({ 'employee': 'Updated successfully' });
     });
 };
 
 exports.delete_employee = function (req, res) {
-    Employee.findByIdAndRemove({ _id: req.params.id }, (err, employee) => {
-        if (err)
+    var id = req.params.id
+    //TODO: some check that id makes sense?
+    Employee.findByIdAndRemove({ _id: id }, (err, employee) => {
+        if (err)            
             res.json(err);
         else
+            Review.remove({ owner: new ObjectID(id) }, (err, rev) => {
+                if (err)
+                    res.json(err);
+            });
+            Task.remove({ owner: new ObjectID(id) }, (err, task) => {
+                if (err)
+                    res.json(err);
+            });
             res.json('Removed successfully');
     });
 }
