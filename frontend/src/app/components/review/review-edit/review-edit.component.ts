@@ -36,7 +36,7 @@ export class ReviewEditComponent implements OnInit {
     this.reviewService.updateReview(this.review)
       .subscribe(res => {
         console.log(res);
-        this.snackBar.open('Task deleted', 'OK', {
+        this.snackBar.open('Review updated', 'OK', {
           duration: 1000,
         });
       });

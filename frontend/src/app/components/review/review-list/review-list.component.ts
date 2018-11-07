@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { State } from 'src/app/models/app-state.model';
 import * as StateActions from '../../../store/state.actions'
 import { Observable } from 'rxjs';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
   selector: 'app-review-list',
@@ -15,10 +16,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./review-list.component.scss']
 })
 export class ReviewListComponent implements OnInit {
-  employees: Employee[]
   state: Observable<State>;
 
-  constructor(reviewService: ReviewService, private store: Store<State>, private configService: ConfigService, private employeeService: EmployeeService) {
+  constructor(private taskService: TaskService, reviewService: ReviewService, private store: Store<State>, private configService: ConfigService, private employeeService: EmployeeService) {
     this.state = store.select('state');
 
     this.state.subscribe(curr => {
@@ -26,26 +26,22 @@ export class ReviewListComponent implements OnInit {
         this.store.dispatch(new StateActions.ChangeReviews(data))
       })
     })
-
-    
-
-
-    this.employeeService.getEmployees()
-      .subscribe(employees => this.employees = employees);
   }
 
   ngOnInit() {
-
-  }
-
-  getEmployeeName(id: String): String {
-    console.log('looking for emp with id: ' + id)
-    var emp = this.employees.find(x => x._id == id)
-    return emp.last_name + ' ' + emp.first_name
   }
 
   changeCurrentEmployee(id: String) {
-    this.store.dispatch(new StateActions.ChangeEmployee(this.employees.find(x => x._id == id)))
+    this.employeeService.getEmployeeById(id).subscribe(emp => {
+      this.store.dispatch(new StateActions.ChangeEmployee(emp))
+
+      this.state.subscribe(curr => {
+        this.taskService.getTasks(curr.employee._id, curr.period.date_from, curr.period.date_to)
+          .subscribe(tasks => {
+            this.store.dispatch(new StateActions.ChangeTasks(tasks))
+          })
+      });
+    })
   }
 
 }

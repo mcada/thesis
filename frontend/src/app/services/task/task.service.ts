@@ -6,6 +6,9 @@ import { Task } from '../../models/task.model';
 import { HttpHeaders } from '@angular/common/http';
 import { TASKS } from '../../models/mock-tasks';
 import { Config } from 'src/app/models/config.model';
+import { Store } from '@ngrx/store';
+import { State } from '../../models/app-state.model';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,19 +20,17 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TaskService {
-  currentConfig: Config;
+  state: Observable<State>;
 
 
 
-  constructor(private http: HttpClient, private config: ConfigService) {
-    config.currentConfig$.subscribe(data => {
-      this.currentConfig = data;
-    })
+  constructor(private store: Store<State>, private http: HttpClient, private config: ConfigService) {
+    this.state = store.select('state');
   }
 
-  getTasks(owner: String): Observable<any> {
+  getTasks(owner: String, from: Date, to: Date): Observable<any> {
     console.log('here')
-    return this.http.get(this.config.backendUrl + 'task/' + owner + '/' + this.currentConfig.date_from + '/' + this.currentConfig.date_to);
+    return this.http.get(this.config.backendUrl + 'task/' + owner + '/' + from + '/' + to);
   }
 
   updateTask(task: Task): Observable<any> {

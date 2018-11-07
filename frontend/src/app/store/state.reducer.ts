@@ -19,7 +19,8 @@ const initialState: State = {
         date_from: new Date('2018-07-03T22:00:00.000Z'),
         date_to: new Date("2018-06-04T22:00:00.000Z")
     },
-    reviews: []
+    reviews: [],
+    tasks: [],
 }
 
 // Section 2
@@ -29,6 +30,8 @@ export function stateReducer(state: State = initialState, action: StateActions.A
     switch (action.type) {
         case StateActions.CHANGE_EMPLOYEE:
             //probably not the best approach, but should work
+            console.log('reducer dispatching CHANGE_EMPLOYEE:')
+            console.log(action.payload)
             state.employee = action.payload
             return state;
         case StateActions.CHANGE_CONFIG:
@@ -39,6 +42,15 @@ export function stateReducer(state: State = initialState, action: StateActions.A
             //probably not the best approach, but should work
             console.log('reducer dispatching CHANGE_REVIEWS')
             state.reviews = action.payload
+            return state;
+        case StateActions.CHANGE_TASKS:
+            //probably not the best approach, but should work
+            console.log('reducer dispatching CHANGE_TASKS')
+            state.tasks = action.payload
+            return state;
+        case StateActions.REMOVE_TASK:
+            //probably not the best approach, but should work
+            state.tasks = state.tasks.filter(x => !(x._id == action.payload))
             return state;
         default:
             return state;

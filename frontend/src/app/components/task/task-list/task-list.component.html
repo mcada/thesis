@@ -1,10 +1,10 @@
 <mat-card>
-  <mat-card-title>Tasks of user {{employeeId}}</mat-card-title>
+  <mat-card-title>Tasks of user {{(state | async)?.employee.first_name}} {{(state | async)?.employee.last_name}}</mat-card-title>
   <mat-divider></mat-divider>
 
   <mat-card-content>
 
-    <mat-expansion-panel *ngFor="let task of tasks">
+    <mat-expansion-panel *ngFor="let task of (state | async)?.tasks">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{task.date | date: shortDate}} - {{task.description}}

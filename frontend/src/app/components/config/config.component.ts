@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { State } from '../../models/app-state.model';
 import * as StateActions from '../../store/state.actions'
 import { ReviewService } from 'src/app/services/review/review.service';
+import { TaskService } from 'src/app/services/task/task.service';
 
 
 @Component({
