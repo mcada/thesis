@@ -4,6 +4,9 @@ import { Review } from '../../../models/review.model';
 import { ConfigService } from 'src/app/services/config.service';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { Employee } from 'src/app/models/employee.model';
+import { Store } from '@ngrx/store';
+import { State } from 'src/app/models/app-state.model';
+import * as StateActions from '../../../store/state.actions'
 
 @Component({
   selector: 'app-review-list',
@@ -14,7 +17,7 @@ export class ReviewListComponent implements OnInit {
   reviews: Review[]
   employees: Employee[]
 
-  constructor(private configService: ConfigService, private employeeService: EmployeeService) {
+  constructor(private store: Store<State>, private configService: ConfigService, private employeeService: EmployeeService) {
     configService.reviews$.subscribe(data => {
       this.reviews = data;
     })
@@ -30,6 +33,14 @@ export class ReviewListComponent implements OnInit {
     console.log('looking for emp with id: ' + id)
     var emp = this.employees.find(x => x._id == id)
     return emp.last_name + ' ' + emp.first_name
+  }
+
+  changeCurrentEmployee(id: String) {
+    const emp: Employee = this.employees.find(x => x._id == id);
+    const newState: State = {
+      employee: emp
+    }
+    this.store.dispatch(new StateActions.ChangeState(newState))
   }
 
 }
