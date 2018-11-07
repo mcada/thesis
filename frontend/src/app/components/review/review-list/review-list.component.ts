@@ -36,11 +36,7 @@ export class ReviewListComponent implements OnInit {
   }
 
   changeCurrentEmployee(id: String) {
-    const emp: Employee = this.employees.find(x => x._id == id);
-    const newState: State = {
-      employee: emp
-    }
-    this.store.dispatch(new StateActions.ChangeState(newState))
+    this.store.dispatch(new StateActions.ChangeEmployee(this.employees.find(x => x._id == id)))
   }
 
 }

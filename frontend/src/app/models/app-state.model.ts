@@ -1,5 +1,8 @@
 import { Employee } from "./employee.model";
+import { Config } from "./config.model";
+import { Review } from "./review.model";
 
 export interface State {
-    readonly employee: Employee;
+    employee: Employee;
+    period: Config;
 }

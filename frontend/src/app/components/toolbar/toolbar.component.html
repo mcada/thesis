@@ -4,7 +4,8 @@
       <mat-icon>mood</mat-icon>
     </span>
 
-    <span class='current-period' [mat-menu-trigger-for]="menu" *ngIf="selectedConfig">Current period: {{selectedConfig.date_from | date: local}} - {{selectedConfig.date_to
+    <span class='current-period' [mat-menu-trigger-for]="menu">Current period:
+      {{(state | async).period.date_from  | date: local}} - {{(state | async).period.date_to
       | date: local}}</span>
     <button mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>more_vert</mat-icon>
