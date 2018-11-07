@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../services/config.service';
 import { Config } from 'src/app/models/config.model';
 import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { State } from '../../models/app-state.model';
+import * as StateActions from '../../store/state.actions'
+import { ReviewService } from 'src/app/services/review/review.service';
+import { TaskService } from 'src/app/services/task/task.service';
+
 
 @Component({
   selector: 'app-config',
@@ -16,7 +23,11 @@ export class ConfigComponent implements OnInit {
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['from', 'to', 'action'];
 
-  constructor(private configService: ConfigService) {
+  state: Observable<State>;
+
+  constructor(private reviewService: ReviewService, private store: Store<State>, private configService: ConfigService) {
+    this.state = store.select('state');
+
     configService.currentConfig$.subscribe(data => {
       this.currentConfig = data;
     })
@@ -27,7 +38,10 @@ export class ConfigComponent implements OnInit {
   }
 
   setConfig(config: Config) {
-    this.configService.setCurrentConfig(config);
+    this.store.dispatch(new StateActions.ChangeConfig(config))
+    this.reviewService.loadReviews(config._id).subscribe(data => {
+      this.store.dispatch(new StateActions.ChangeReviews(data))
+    })
   }
 
   deleteConfig(config: Config) {

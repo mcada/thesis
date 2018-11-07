@@ -21,6 +21,11 @@ import { ConfigComponent } from './components/config/config.component';
 import { ReviewListComponent } from './components/review/review-list/review-list.component';
 import { ReviewEditComponent } from './components/review/review-edit/review-edit.component';
 
+//store
+import { StoreModule } from '@ngrx/store';
+import { stateReducer } from './store/state.reducer';
+import { CurrentComponent } from './components/employee/current/current.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,10 +38,14 @@ import { ReviewEditComponent } from './components/review/review-edit/review-edit
     ConfigComponent,
     ReviewListComponent,
     ReviewEditComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    CurrentComponent
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({
+      state: stateReducer
+    }),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

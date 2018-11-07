@@ -4,6 +4,11 @@ import { EmployeeService } from '../../../services/employee/employee.service';
 import { Employee } from '../../../models/employee.model';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { State } from '../../../models/app-state.model';
+import { ReviewService } from 'src/app/services/review/review.service';
+import * as StateActions from '../../../store/state.actions'
 
 @Component({
   selector: 'app-edit',
@@ -17,7 +22,11 @@ export class EditComponent implements OnInit, OnDestroy {
 
   private sub: any;
 
-  constructor(public snackBar: MatSnackBar, private router: Router, private employeeService: EmployeeService, private route: ActivatedRoute) { }
+  state: Observable<State>;
+
+  constructor(private reviewService: ReviewService, private store: Store<State>, public snackBar: MatSnackBar, private router: Router, private employeeService: EmployeeService, private route: ActivatedRoute) {
+    this.state = store.select('state');
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -58,6 +67,14 @@ export class EditComponent implements OnInit, OnDestroy {
           });
           // Page redirect when getting response
           this.router.navigate(['/employee/list']);
+
+          this.state.subscribe(curr => {
+            this.reviewService.loadReviews(curr.period._id).subscribe(data => {
+              this.store.dispatch(new StateActions.ChangeReviews(data))
+            })
+          })
+
+
         }, (error) => {
           console.log("err", error);
         });

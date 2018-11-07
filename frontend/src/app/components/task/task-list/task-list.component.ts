@@ -3,7 +3,10 @@ import { TaskService } from '../../../services/task/task.service';
 import { Task } from '../../../models/task.model';
 import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { State } from '../../../models/app-state.model';
+import * as StateActions from '../../../store/state.actions'
 
 @Component({
   selector: 'app-task-list',
@@ -11,7 +14,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit {
-  employeeId: String;
   private sub: any;
   tasks: Task[];
 
@@ -20,22 +22,13 @@ export class TaskListComponent implements OnInit {
   task_points: Number;
   task_managers_note: String;
 
+  state: Observable<State>;
 
-  constructor(public snackBar: MatSnackBar, private taskService: TaskService, private route: ActivatedRoute) { }
-
- 
+  constructor(private store: Store<State>, public snackBar: MatSnackBar, private taskService: TaskService, private route: ActivatedRoute) {
+    this.state = store.select('state');
+  }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.employeeId = params['id']; // (+) converts string 'id' to a number
-
-      console.log('id: ' + this.employeeId);
-      // In a real app: dispatch action to load the details here.
-      this.taskService.getTasks(this.employeeId)
-        .subscribe(tasks => {
-          this.tasks = tasks;
-        })
-    });
   }
 
 
@@ -62,10 +55,8 @@ export class TaskListComponent implements OnInit {
             duration: 1000,
           });
           console.log(returned)
-          //TODO: better would be to filter table datasource for the task and remove it so there 
-          //      will be no need for another http call
-          this.taskService.getTasks(this.employeeId)
-            .subscribe(tasks => this.tasks = tasks);
+
+          this.store.dispatch(new StateActions.RemoveTask(task_id))
         });
     }
   }
