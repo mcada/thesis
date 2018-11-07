@@ -7,6 +7,7 @@ import { Employee } from 'src/app/models/employee.model';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/models/app-state.model';
 import * as StateActions from '../../../store/state.actions'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-review-list',
@@ -14,13 +15,21 @@ import * as StateActions from '../../../store/state.actions'
   styleUrls: ['./review-list.component.scss']
 })
 export class ReviewListComponent implements OnInit {
-  reviews: Review[]
   employees: Employee[]
+  state: Observable<State>;
 
-  constructor(private store: Store<State>, private configService: ConfigService, private employeeService: EmployeeService) {
-    configService.reviews$.subscribe(data => {
-      this.reviews = data;
+  constructor(reviewService: ReviewService, private store: Store<State>, private configService: ConfigService, private employeeService: EmployeeService) {
+    this.state = store.select('state');
+
+    this.state.subscribe(curr => {
+      reviewService.loadReviews(curr.period._id).subscribe(data => {
+        this.store.dispatch(new StateActions.ChangeReviews(data))
+      })
     })
+
+    
+
+
     this.employeeService.getEmployees()
       .subscribe(employees => this.employees = employees);
   }

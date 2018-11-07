@@ -35,4 +35,9 @@ export class ReviewService {
   updateReview(review: Review): Observable<any> {
     return this.http.put(this.config.backendUrl + 'review/' + review._id + '/update', review, httpOptions);
   }
+
+  loadReviews(configId: String): Observable<any> {
+    return this.http.get(this.config.backendUrl + 'review/' + configId)
+      
+  }
 }

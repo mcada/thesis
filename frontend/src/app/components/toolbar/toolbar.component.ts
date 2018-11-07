@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { State } from 'src/app/models/app-state.model';
 import * as StateActions from '../../store/state.actions'
 import { Observable } from 'rxjs';
+import { ReviewService } from 'src/app/services/review/review.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -15,7 +16,7 @@ export class ToolbarComponent implements OnInit {
   configs: Config[]
   state: Observable<State>;
 
-  constructor(private store: Store<State>, private configService: ConfigService) {
+  constructor(private reviewService: ReviewService, private store: Store<State>, private configService: ConfigService) {
     this.configService.allConfigs$.subscribe(data => {
       console.log('found some config data: ')
       console.log(data)
@@ -28,10 +29,12 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
 
   }
-
-
+  
   setConfig(config: Config) {
     this.store.dispatch(new StateActions.ChangeConfig(config))
+    this.reviewService.loadReviews(config._id).subscribe(data => {
+      this.store.dispatch(new StateActions.ChangeReviews(data))
+    })
   }
 
 }

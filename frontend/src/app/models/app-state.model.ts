@@ -5,4 +5,5 @@ import { Review } from "./review.model";
 export interface State {
     employee: Employee;
     period: Config;
+    reviews: Review[];
 }

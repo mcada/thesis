@@ -1,12 +1,12 @@
-
 <div class='top-margin'>
-    <mat-grid-list (click)="changeCurrentEmployee(item.owner._id)" [routerLink]="['/list', item.owner._id]" *ngFor="let item of reviews" role="listitem" cols="5" rowHeight=3em>
-      <mat-grid-tile colspan=4>
-        {{item.owner.last_name}} {{item.owner.first_name}}
-      </mat-grid-tile>
-      <mat-grid-tile colspan=1>
-        {{item.total_points}}
-      </mat-grid-tile>
-    </mat-grid-list>
+  <mat-grid-list (click)="changeCurrentEmployee(item.owner._id)" [routerLink]="['/list', item.owner._id]" *ngFor="let item of (state | async)?.reviews"
+    role="listitem" cols="5" rowHeight=3em>
+    <mat-grid-tile colspan=4>
+      {{item.owner.last_name}} {{item.owner.first_name}}
+    </mat-grid-tile>
+    <mat-grid-tile colspan=1>
+      {{item.total_points}}
+    </mat-grid-tile>
+  </mat-grid-list>
 
-  </div>
+</div>
