@@ -3,7 +3,7 @@
   <mat-divider></mat-divider>
   <mat-card-content>
 
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="(state | async)?.configs">
 
         <!-- From Column -->
         <ng-container matColumnDef="from">

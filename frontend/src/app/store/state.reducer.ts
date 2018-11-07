@@ -21,6 +21,7 @@ const initialState: State = {
     },
     reviews: [],
     tasks: [],
+    configs: []
 }
 
 // Section 2
@@ -37,6 +38,10 @@ export function stateReducer(state: State = initialState, action: StateActions.A
         case StateActions.CHANGE_CONFIG:
             //probably not the best approach, but should work
             state.period = action.payload
+            return state;
+        case StateActions.CHANGE_CONFIGS:
+            //probably not the best approach, but should work
+            state.configs = action.payload
             return state;
         case StateActions.CHANGE_REVIEWS:
             //probably not the best approach, but should work

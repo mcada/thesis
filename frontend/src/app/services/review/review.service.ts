@@ -7,6 +7,7 @@ import { Review } from '../../models/review.model';
 import { Config } from '../../models/config.model';
 import { BehaviorSubject } from 'rxjs';
 
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -17,20 +18,13 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ReviewService {
-  currentConfig: Config;
-
-
 
   constructor(private http: HttpClient, private config: ConfigService) {
-    config.currentConfig$.subscribe(data => {
-      this.currentConfig = data;
-      this.config.updateReviews(this.currentConfig._id)
-    })
   }
 
-  getReviewById(id: String): Observable<any> {
-    return this.http.get(this.config.backendUrl + 'review/' + id + '/' + this.currentConfig._id );
-  }  
+  getReviewById(ownerId: String, configId: String): Observable<any> {
+    return this.http.get(this.config.backendUrl + 'review/' + ownerId + '/' + configId);
+  }
 
   updateReview(review: Review): Observable<any> {
     return this.http.put(this.config.backendUrl + 'review/' + review._id + '/update', review, httpOptions);
@@ -38,6 +32,6 @@ export class ReviewService {
 
   loadReviews(configId: String): Observable<any> {
     return this.http.get(this.config.backendUrl + 'review/' + configId)
-      
+
   }
 }

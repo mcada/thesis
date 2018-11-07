@@ -8,4 +8,5 @@ export interface State {
     period: Config;
     reviews: Review[];
     tasks: Task[];
+    configs: Config[]
 }

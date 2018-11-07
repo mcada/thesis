@@ -14,7 +14,7 @@ export const CHANGE_REVIEWS = '[REVIEWS] Reload'
 export const CHANGE_TASKS = '[TASKS] Reload'
 export const REMOVE_TASK = '[TASKS] Remove'
 export const REMOVE_TUTORIAL = '[TUTORIAL] Remove'
-
+export const CHANGE_CONFIGS = '[CONFIGS] Change'
 
 // Section 3
 export class ChangeEmployee implements Action {
@@ -41,6 +41,12 @@ export class ChangeTasks implements Action {
     constructor(public payload: Task[]) { }
 }
 
+export class ChangeConfigs implements Action {
+    readonly type = CHANGE_CONFIGS
+
+    constructor(public payload: Config[]) { }
+}
+
 export class RemoveTask implements Action {
     readonly type = REMOVE_TASK
 
@@ -54,4 +60,4 @@ export class RemoveTutorial implements Action {
 }
 
 // Section 4
-export type Actions = RemoveTask | ChangeTasks | ChangeEmployee | ChangeConfig | ChangeReviews | RemoveTutorial
+export type Actions = ChangeConfigs | RemoveTask | ChangeTasks | ChangeEmployee | ChangeConfig | ChangeReviews | RemoveTutorial

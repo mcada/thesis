@@ -22,14 +22,11 @@ const httpOptions = {
 export class TaskService {
   state: Observable<State>;
 
-
-
   constructor(private store: Store<State>, private http: HttpClient, private config: ConfigService) {
     this.state = store.select('state');
   }
 
   getTasks(owner: String, from: Date, to: Date): Observable<any> {
-    console.log('here')
     return this.http.get(this.config.backendUrl + 'task/' + owner + '/' + from + '/' + to);
   }
 
