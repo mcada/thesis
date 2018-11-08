@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../config.service';
 import { Task } from '../../models/task.model';
 import { HttpHeaders } from '@angular/common/http';
-import { TASKS } from '../../models/mock-tasks';
 import { Config } from 'src/app/models/config.model';
 import { Store } from '@ngrx/store';
 import { State } from '../../models/app-state.model';
@@ -30,8 +29,8 @@ export class TaskService {
     return this.http.get(this.config.backendUrl + 'task/' + owner + '/' + from + '/' + to);
   }
 
-  updateTask(task: Task): Observable<any> {
-    return this.http.put(this.config.backendUrl + 'task/' + task._id + '/update', task, httpOptions);
+  updateTask(task: Task, points: Number): Observable<any> {
+    return this.http.put(this.config.backendUrl + 'task/' + task._id + '/update/' + points, task, httpOptions);
   }
 
   createTask(task: Task): Observable<any> {

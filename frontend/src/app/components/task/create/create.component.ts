@@ -7,6 +7,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { State } from '../../../models/app-state.model';
 import * as StateActions from '../../../store/state.actions'
+import { Review } from 'src/app/models/review.model';
 
 @Component({
   selector: 'app-create-task',
@@ -14,6 +15,7 @@ import * as StateActions from '../../../store/state.actions'
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit, OnDestroy {
+  //TODO: get rid of employeeId and use store and current employee instead!
   employeeId: String;
   private sub: Subscription;
   state: Observable<State>;
@@ -23,7 +25,7 @@ export class CreateComponent implements OnInit, OnDestroy {
   //special method coz this is stupid doing it via ngModel, it works tho
   task_date: Date;
   task_description: String;
-  task_points: Number;
+  task_points: number;
   task_managers_note: String;
   task_jira: String;
 
@@ -61,6 +63,13 @@ export class CreateComponent implements OnInit, OnDestroy {
           this.sub.add(this.taskService.getTasks(curr.employee._id, curr.period.date_from, curr.period.date_to)
             .subscribe(tasks => {
               this.store.dispatch(new StateActions.ChangeTasks(tasks))
+              
+              var rev: Review = curr.reviews.find(x => x.owner._id == curr.employee._id)              
+              rev.total_points_from_tasks = rev.total_points_from_tasks + newTask.bonus_points
+              rev.total_points = rev.total_points_from_tasks + rev.points_from_team_lead
+
+              this.store.dispatch(new StateActions.ChangeReview(rev))
+
             }))
         }));
       }));

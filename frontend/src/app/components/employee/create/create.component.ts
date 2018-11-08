@@ -41,11 +41,12 @@ export class CreateComponent implements OnInit, OnDestroy {
         this.sub.add(this.state.subscribe(curr => {
           this.sub.add(this.reviewService.loadReviews(curr.period._id).subscribe(data => {
             this.store.dispatch(new StateActions.ChangeReviews(data))
+            // Page redirect when getting response
+            this.router.navigate(['/employee/list']);
           }))
         }))
 
-        // Page redirect when getting response
-        this.router.navigate(['/employee/list']);
+
       }, (error) => {
         console.log("err", error);
       }));

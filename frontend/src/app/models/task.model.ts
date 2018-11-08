@@ -3,7 +3,8 @@ export class Task {
     description: String
     jira_link: String
     date: Date
-    bonus_points: Number
+    bonus_points: number
+    new_points: number
     managers_note: String
     owner: String
 }

@@ -16,6 +16,8 @@ import { TaskService } from 'src/app/services/task/task.service';
 })
 export class ReviewEditComponent implements OnInit, OnDestroy {
   id: String;
+  //TODO: find out how to update review via store so it changes when
+  // current period is changed
   review: Review;
   state: Observable<State>;
 
@@ -48,13 +50,15 @@ export class ReviewEditComponent implements OnInit, OnDestroy {
   updateReview() {
     console.log('updating review')
     console.log(this.review)
+    this.review.total_points = this.review.points_from_team_lead + this.review.total_points_from_tasks
+
     this.sub.add(this.reviewService.updateReview(this.review)
       .subscribe(res => {
         console.log(res);
         this.snackBar.open('Review updated', 'OK', {
           duration: 1000,
         });
+        this.store.dispatch(new StateActions.ChangeReview(this.review))
       }));
   }
-
 }

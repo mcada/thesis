@@ -67,15 +67,13 @@ export class EditComponent implements OnInit, OnDestroy {
             duration: 3000,
           });
           // Page redirect when getting response
-          this.router.navigate(['/employee/list']);
 
           this.sub.add(this.state.subscribe(curr => {
             this.sub.add(this.reviewService.loadReviews(curr.period._id).subscribe(data => {
               this.store.dispatch(new StateActions.ChangeReviews(data))
-            })
-            )
+              this.router.navigate(['/employee/list']);
+            }))
           }))
-
 
         }, (error) => {
           console.log("err", error);

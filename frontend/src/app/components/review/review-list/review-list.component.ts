@@ -19,7 +19,7 @@ export class ReviewListComponent implements OnInit, OnDestroy {
   state: Observable<State>;
   private sub: Subscription;
 
-  constructor(private taskService: TaskService, reviewService: ReviewService, private store: Store<State>, private configService: ConfigService, private employeeService: EmployeeService) {
+  constructor(private taskService: TaskService, private reviewService: ReviewService, private store: Store<State>, private configService: ConfigService, private employeeService: EmployeeService) {
     this.sub = new Subscription();
     this.state = store.select('state');
 
@@ -37,14 +37,14 @@ export class ReviewListComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe()
   }
 
-  changeCurrentEmployee(id: String) {
+  changeCurrent(id: String) {
     this.sub.add(this.employeeService.getEmployeeById(id).subscribe(emp => {
       this.store.dispatch(new StateActions.ChangeEmployee(emp))
 
       this.sub.add(this.state.subscribe(curr => {
         this.sub.add(this.taskService.getTasks(curr.employee._id, curr.period.date_from, curr.period.date_to)
           .subscribe(tasks => {
-            this.store.dispatch(new StateActions.ChangeTasks(tasks))
+            this.store.dispatch(new StateActions.ChangeTasks(tasks))            
           }))
       }));
     }))

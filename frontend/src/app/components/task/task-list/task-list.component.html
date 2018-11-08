@@ -10,7 +10,9 @@
           {{task.date | date: shortDate}} - {{task.description}}
         </mat-panel-title>
         <mat-panel-description>
+          <div>___Bonus points: {{task.bonus_points}}</div>
           <a *ngIf="task.jira_link" href="{{task.jira_link}}">Jira link</a>
+
         </mat-panel-description>
       </mat-expansion-panel-header>
 
@@ -32,14 +34,14 @@
 
 
           <div class='slider-input'>
-            <span>Bonus points:</span>
-            <mat-slider thumbLabel min="0" max="3" step="1" value="0" name='bonus_points' [(ngModel)]="task.bonus_points"></mat-slider>
+            <span>Bonus points:</span><br>
+            <mat-slider thumbLabel min="0" max="3" step="1" value="task.new_points" name='bonus_points' [(ngModel)]="task.new_points"></mat-slider>
           </div>
 
         </form>
         <div class='submit-button'>
           <button class='space-right' mat-raised-button (click)="updateTask(task)" [disabled]="updateTaskForm.form.invalid">Update</button>
-          <button mat-raised-button (click)="deleteTask(task._id)">Delete</button>
+          <button mat-raised-button (click)="deleteTask(task)">Delete</button>
 
         </div>
       </mat-card>

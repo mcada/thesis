@@ -11,8 +11,10 @@ import { Task } from '../models/task.model';
 export const CHANGE_EMPLOYEE = '[EMPLOYEE] Change'
 export const CHANGE_CONFIG = '[CONFIG] Change'
 export const CHANGE_REVIEWS = '[REVIEWS] Reload'
+export const CHANGE_REVIEW = '[REVIEW] Change'
 export const CHANGE_TASKS = '[TASKS] Reload'
-export const REMOVE_TASK = '[TASKS] Remove'
+export const UPDATE_TASK = '[TASK] UPDATE'
+export const REMOVE_TASK = '[TASK] Remove'
 export const REMOVE_TUTORIAL = '[TUTORIAL] Remove'
 export const CHANGE_CONFIGS = '[CONFIGS] Change'
 
@@ -35,10 +37,22 @@ export class ChangeReviews implements Action {
     constructor(public payload: Review[]) { }
 }
 
+export class ChangeReview implements Action {
+    readonly type = CHANGE_REVIEW
+
+    constructor(public payload: Review) { }
+}
+
 export class ChangeTasks implements Action {
     readonly type = CHANGE_TASKS
 
     constructor(public payload: Task[]) { }
+}
+
+export class UpdateTask implements Action {
+    readonly type = UPDATE_TASK
+
+    constructor(public payload: Task) { }
 }
 
 export class ChangeConfigs implements Action {
@@ -60,4 +74,4 @@ export class RemoveTutorial implements Action {
 }
 
 // Section 4
-export type Actions = ChangeConfigs | RemoveTask | ChangeTasks | ChangeEmployee | ChangeConfig | ChangeReviews | RemoveTutorial
+export type Actions = ChangeReview | UpdateTask | ChangeConfigs | RemoveTask | ChangeTasks | ChangeEmployee | ChangeConfig | ChangeReviews | RemoveTutorial

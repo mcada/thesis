@@ -5,6 +5,7 @@ import { Task } from "./task.model";
 
 export interface State {
     employee: Employee;
+    review: Review;
     period: Config;
     reviews: Review[];
     tasks: Task[];
