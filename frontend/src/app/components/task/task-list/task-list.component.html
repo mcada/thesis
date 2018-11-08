@@ -10,7 +10,7 @@
           {{task.date | date: shortDate}} - {{task.description}}
         </mat-panel-title>
         <mat-panel-description>
-          <div>___Bonus points: {{task.bonus_points}}</div>
+          <div>Bonus points: {{task.bonus_points}}____</div>
           <a *ngIf="task.jira_link" href="{{task.jira_link}}">Jira link</a>
 
         </mat-panel-description>
