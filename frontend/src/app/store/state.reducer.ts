@@ -61,7 +61,7 @@ export function stateReducer(state: State = initialState, action: StateActions.A
             return state;
         case StateActions.CHANGE_CONFIGS:
             //probably not the best approach, but should work
-            state.configs = action.payload
+            state.configs = action.payload.sort((a, b) => b.date_from > a.date_from ? -1 : 1)
             return state;
         case StateActions.CHANGE_REVIEWS:
             //probably not the best approach, but should work
