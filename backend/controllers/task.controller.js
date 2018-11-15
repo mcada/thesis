@@ -40,7 +40,7 @@ exports.add_task = function (req, res) {
             if (review_from <= task_date && task_date < review_to) {
                 console.log('review update required')
                 rev.total_points_from_tasks = rev.total_points_from_tasks + task.bonus_points
-                rev.total_points = rev.points_from_team_lead + rev.total_points_from_tasks
+                rev.total_points = rev.total_points + task.bonus_points
                 rev.save((err, rev) => {
                     if (err)
                         console.log(err)
@@ -80,7 +80,7 @@ exports.update_task = function (req, res) {
                         console.log('current total points from tasks: ' + rev.total_points_from_tasks)
                         console.log('current total points: ' + rev.total_points)
                         rev.total_points_from_tasks = rev.total_points_from_tasks + points_difference
-                        rev.total_points = rev.points_from_team_lead + rev.total_points_from_tasks
+                        rev.total_points = rev.total_points + points_difference
                         console.log('current total points from tasks: ' + rev.total_points_from_tasks)
                         console.log('current total points: ' + rev.total_points)
                         rev.save((err, rev) => {
@@ -122,7 +122,7 @@ exports.delete_task = function (req, res) {
                         console.log('current total points from tasks: ' + rev.total_points_from_tasks)
                         console.log('current total points: ' + rev.total_points)
                         rev.total_points_from_tasks = rev.total_points_from_tasks - task.bonus_points
-                        rev.total_points = rev.points_from_team_lead + rev.total_points_from_tasks
+                        rev.total_points = rev.total_points - task.bonus_points
                         console.log('current total points from tasks: ' + rev.total_points_from_tasks)
                         console.log('current total points: ' + rev.total_points)
                         rev.save((err, rev) => {

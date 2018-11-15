@@ -35,12 +35,7 @@ exports.add_employee = function (req, res) {
 
                 let newReview = new Review();
                 newReview.owner = employee._id
-                newReview.period = con._id
-                newReview.total_points = 0
-                newReview.points_from_team_lead = 0
-                newReview.total_points_from_tasks = 0
-                newReview.feedback_manager = ''
-                newReview.feedback_team_lead= ''
+                newReview.period = con._id                
                 newReview.save()
             });
             res.status(200).json({ 'employee': 'Added successfully' });

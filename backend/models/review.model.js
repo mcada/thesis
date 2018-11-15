@@ -17,9 +17,15 @@ let ReviewSchema = new Schema({
     },
     points_from_team_lead: {
         type: Number,
+        default: 0
+    },
+    points_from_manager: {
+        type: Number,
+        default: 0
     },
     total_points_from_tasks: {
         type: Number,
+        default: 0
     },
     owner: {
         type: Schema.Types.ObjectId,

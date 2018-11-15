@@ -22,7 +22,9 @@ exports.get_settings = function (req, res) {
         if (err)
             console.log(err);
         else
-            res.json(settings);
+            // res.json('{"updated":"' + dateFormat(settings.updated, "yyyy-mm-dd") + '"}');
+            res.json(dateFormat(settings.updated, "yyyy-mm-dd"));
+
     });
 };
 
@@ -50,9 +52,6 @@ exports.add_config = function (req, res) {
                         console.log(err)
 
                     let newReview = new Review();
-                    newReview.total_points = 0
-                    newReview.points_from_team_lead = 0
-                    newReview.total_points_from_tasks = 0
 
                     if (result[0] != undefined) {
                         newReview.total_points_from_tasks = result[0].total
@@ -62,9 +61,6 @@ exports.add_config = function (req, res) {
 
                     newReview.owner = emp._id
                     newReview.period = newConfig._id
-
-                    newReview.feedback_manager = ''
-                    newReview.feedback_team_lead = ''
                     newReview.save()
 
                 });
@@ -184,7 +180,7 @@ exports.sync_reviews = function (req, res) {
 
             if (result[0] != undefined) {
                 rev.total_points_from_tasks = result[0].total
-                rev.total_points = rev.points_from_team_lead + result[0].total
+                rev.total_points = rev.points_from_team_lead + rev.points_from_manager + result[0].total
             }
             console.log('total counted points for ' + rev.owner + ': ' + rev.total_points)
 

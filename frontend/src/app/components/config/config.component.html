@@ -3,57 +3,74 @@
   <mat-divider></mat-divider>
   <mat-card-content>
 
-      <table mat-table [dataSource]="(state | async)?.configs">
+    <table mat-table [dataSource]="(state | async)?.configs">
 
-        <!-- From Column -->
-        <ng-container matColumnDef="from">
-          <th mat-header-cell *matHeaderCellDef> Start date </th>
-          <td mat-cell *matCellDef="let element;"> {{element.date_from | date: local}} </td>
-        </ng-container>
+      <!-- From Column -->
+      <ng-container matColumnDef="from">
+        <th mat-header-cell *matHeaderCellDef> Start date </th>
+        <td mat-cell *matCellDef="let element;"> {{element.date_from | date: local}} </td>
+      </ng-container>
 
-        <!-- To Column -->
-        <ng-container matColumnDef="to">
-          <th mat-header-cell *matHeaderCellDef> End date </th>
-          <td mat-cell *matCellDef="let element;"> {{element.date_to | date: local}} </td>
-        </ng-container>
+      <!-- To Column -->
+      <ng-container matColumnDef="to">
+        <th mat-header-cell *matHeaderCellDef> End date </th>
+        <td mat-cell *matCellDef="let element;"> {{element.date_to | date: local}} </td>
+      </ng-container>
 
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef> Action </th>
-          <td mat-cell *matCellDef="let element">
-            <button class="nav-button" mat-raised-button (click)="setConfig(element)">Select</button>
-            <button class="nav-button" mat-raised-button (click)="deleteConfig(element)">Delete</button>
-          </td>
-        </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <button class="nav-button" mat-raised-button (click)="setConfig(element)">Select</button>
+          <button class="nav-button" mat-raised-button (click)="deleteConfig(element)">Delete</button>
+        </td>
+      </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 
 
-      <mat-card class='add-config'>
-        <form #addNew="ngForm">
-          <mat-grid-list cols="6" rowHeight="4em">
-            <mat-grid-tile colspan=2>
-              <mat-form-field>
-                <input matInput placeholder="Start date" [matDatepicker]="picker" name="from" [(ngModel)]="newFrom"
-                  required>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker startView="year"></mat-datepicker>
-              </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile colspan=2>
-              <mat-form-field>
-                <input matInput placeholder="End date" [matDatepicker]="picker2" name="to" [(ngModel)]="newTo" required>
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2 startView="year"></mat-datepicker>
-              </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile colspan=2>
-              <button mat-raised-button (click)="createConfig()" [disabled]="addNew.form.invalid">Add new period</button>
-            </mat-grid-tile>
-          </mat-grid-list>
-        </form>
-      </mat-card>
+    <mat-card class='add-config'>
+      <form #addNew="ngForm">
+        <mat-grid-list cols="6" rowHeight="4em">
+          <mat-grid-tile colspan=2>
+            <mat-form-field>
+              <input matInput placeholder="Start date" [matDatepicker]="picker" name="from" [(ngModel)]="newFrom"
+                required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker startView="year"></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan=2>
+            <mat-form-field>
+              <input matInput placeholder="End date" [matDatepicker]="picker2" name="to" [(ngModel)]="newTo" required>
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2 startView="year"></mat-datepicker>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan=2>
+            <button mat-raised-button (click)="createConfig()" [disabled]="addNew.form.invalid">Add new period</button>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+    </mat-card>
+
+  </mat-card-content>
+</mat-card>
+
+
+
+<mat-card>
+  <mat-card-title>Upload tasks from jira</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+
+    <mat-card class='add-config'>
+      <p>Last update: {{ jiraLastUpdate }}</p>
+      <button mat-raised-button (click)="updateFromJira()">Upload new tasks</button>
+
+
+    </mat-card>
 
   </mat-card-content>
 </mat-card>

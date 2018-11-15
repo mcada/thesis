@@ -8,6 +8,7 @@ import { State } from '../../models/app-state.model';
 import * as StateActions from '../../store/state.actions'
 import { ReviewService } from 'src/app/services/review/review.service';
 import { TaskService } from 'src/app/services/task/task.service';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -18,25 +19,46 @@ import { TaskService } from 'src/app/services/task/task.service';
 export class ConfigComponent implements OnInit, OnDestroy {
   newFrom: Date;
   newTo: Date;
+  jiraLastUpdate: String;
 
   displayedColumns: string[] = ['from', 'to', 'action'];
 
   state: Observable<State>;
   private sub: Subscription;
 
-  constructor(private reviewService: ReviewService, private store: Store<State>, private configService: ConfigService) {
+  constructor(public snackBar: MatSnackBar, private reviewService: ReviewService, private store: Store<State>, private configService: ConfigService) {
     this.sub = new Subscription();
     this.state = store.select('state');
   }
 
   ngOnInit() {
+    this.sub.add(this.configService.lastJiraUpdate().subscribe(data => {
+      this.jiraLastUpdate = data
+    }))
+  }
 
+  updateFromJira() {
+    this.sub.add(this.configService.updateFromJira().subscribe(res => {
+      console.log(res)
+
+      this.sub.add(this.configService.lastJiraUpdate().subscribe(data => {
+        this.jiraLastUpdate = data
+
+        this.snackBar.open('Uploading jira tasks...', 'OK', {
+          duration: 3000,
+        });
+      }))
+    }))
   }
 
   setConfig(config: Config) {
     this.store.dispatch(new StateActions.ChangeConfig(config))
     this.sub.add(this.reviewService.loadReviews(config._id).subscribe(data => {
       this.store.dispatch(new StateActions.ChangeReviews(data))
+
+      this.snackBar.open('Current period was changed', 'OK', {
+        duration: 2000,
+      });
     }))
   }
 

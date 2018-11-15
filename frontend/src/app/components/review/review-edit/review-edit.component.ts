@@ -50,7 +50,7 @@ export class ReviewEditComponent implements OnInit, OnDestroy {
   updateReview() {
     console.log('updating review')
     console.log(this.review)
-    this.review.total_points = this.review.points_from_team_lead + this.review.total_points_from_tasks
+    this.review.total_points = this.review.points_from_team_lead + this.review.total_points_from_tasks + this.review.points_from_manager
 
     this.sub.add(this.reviewService.updateReview(this.review)
       .subscribe(res => {
