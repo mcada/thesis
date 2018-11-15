@@ -1,4 +1,11 @@
-<p>
-  {{(state | async)?.employee.first_name}}
-  {{(state | async)?.employee.last_name}}
-</p>
+
+
+<mat-card class='current-employee'>
+  <mat-card-header>Current employee:</mat-card-header>
+  <mat-card-content>
+      <p>
+          {{(state | async)?.employee.first_name}}
+          {{(state | async)?.employee.last_name}}
+        </p>
+  </mat-card-content>
+</mat-card>

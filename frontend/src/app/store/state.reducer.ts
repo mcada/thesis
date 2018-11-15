@@ -31,6 +31,7 @@ const initialState: State = {
         },
         period: "5bdf4f68b6aacc3b533f7729",
         points_from_team_lead: 0,
+        points_from_manager: 0,
         total_points: 0,
         total_points_from_tasks: 0,
     },

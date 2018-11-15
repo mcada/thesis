@@ -36,4 +36,12 @@ export class ConfigService {
     return this.http.post(this.backendUrl + 'config/add', config, httpOptions);
   }
 
+  updateFromJira(): Observable<any> {
+    return this.http.get(this.backendUrl + 'config/updatefromjira')
+  }
+
+  lastJiraUpdate(): Observable<any> {
+    return this.http.get(this.backendUrl + 'config/settings')
+  }
+
 }

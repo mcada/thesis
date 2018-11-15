@@ -4,13 +4,16 @@ const Schema = mongoose.Schema;
 
 let TaskSchema = new Schema({
     description: {
-        type: String
+        type: String,
+        required: true
     },
     jira_link: {
-        type: String
+        type: String,
+        default: 'no-link'
     },
     date: {
-        type: Date
+        type: Date,
+        required: true
     },
     bonus_points: {
         type: Number,
@@ -18,6 +21,7 @@ let TaskSchema = new Schema({
     },
     managers_note: {
         type: String,
+        default: ''
     },
     owner: {
         type: Schema.Types.ObjectId,

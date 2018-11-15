@@ -2,8 +2,8 @@
   <mat-grid-list (click)="changeCurrent(item.owner._id)" [routerLink]="['/list', item.owner._id]" *ngFor="let item of (state | async)?.reviews"
     role="listitem" cols="6" rowHeight=3em>
     <mat-grid-tile>
-      <img mat-card-image src="http://people.brq.redhat.com/photos/pap_wiki/{{item.owner.rhnick}}.jpg" alt="Photo">
-
+      <!-- <img mat-card-image src="http://people.brq.redhat.com/photos/pap_wiki/{{item.owner.rhnick}}.jpg" alt="Photo not found"> -->
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo">
     </mat-grid-tile>
     <mat-grid-tile colspan=4>
       {{item.owner.last_name}} {{item.owner.first_name}}
