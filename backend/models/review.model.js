@@ -4,13 +4,16 @@ const Schema = mongoose.Schema;
 
 let ReviewSchema = new Schema({
     total_points: {
-        type: Number
+        type: Number,
+        default: 0
     },
     feedback_manager: {
-        type: String
+        type: String,
+        default: ''
     },
     feedback_team_lead: {
-        type: String
+        type: String,
+        default: ''
     },
     points_from_team_lead: {
         type: Number,
