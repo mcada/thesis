@@ -67,6 +67,7 @@ export function stateReducer(state: State = initialState, action: StateActions.A
         case StateActions.CHANGE_REVIEWS:
             //probably not the best approach, but should work
             console.log('reducer dispatching CHANGE_REVIEWS')
+            // TODO: sort by two fields - if points are 0 the position is random :(
             state.reviews = action.payload.sort((a, b) => b.total_points - a.total_points)
             return state;
         case StateActions.CHANGE_REVIEW:

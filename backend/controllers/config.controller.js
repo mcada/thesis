@@ -181,7 +181,11 @@ exports.sync_reviews = function (req, res) {
             if (result[0] != undefined) {
                 rev.total_points_from_tasks = result[0].total
                 rev.total_points = rev.points_from_team_lead + rev.points_from_manager + result[0].total
+            } else {
+                rev.total_points_from_tasks = 0
+                rev.total_points = rev.points_from_team_lead + rev.points_from_manager
             }
+            console.log('calculated total points for selected period: ' + result[0])
             console.log('total counted points for ' + rev.owner + ': ' + rev.total_points)
 
             Review.findOneAndUpdate({ _id: rev._id }, { $set: rev }, (err, result) => {

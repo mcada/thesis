@@ -25,6 +25,8 @@ import { ReviewEditComponent } from './components/review/review-edit/review-edit
 import { StoreModule } from '@ngrx/store';
 import { stateReducer } from './store/state.reducer';
 import { CurrentComponent } from './components/employee/current/current.component';
+import { PresenterComponent } from './components/review/review-edit/presenter/presenter.component';
+import { TaskPresenterComponent } from './components/task/create/presenter/presenter.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { CurrentComponent } from './components/employee/current/current.componen
     ReviewEditComponent,
     CreateTaskComponent,
     CurrentComponent,
+    PresenterComponent,
+    TaskPresenterComponent
   ],
   imports: [
     BrowserModule,

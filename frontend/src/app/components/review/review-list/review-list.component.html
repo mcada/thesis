@@ -1,5 +1,5 @@
 <div class='top-margin'>
-  <mat-grid-list (click)="changeCurrent(item.owner._id)" [routerLink]="['/list', item.owner._id]" *ngFor="let item of (state | async)?.reviews"
+  <mat-grid-list (click)="changeCurrent(item.owner._id)" [routerLink]="['/list']" *ngFor="let item of (state | async)?.reviews"
     role="listitem" cols="6" rowHeight=3em>
     <mat-grid-tile>
       <!-- <img mat-card-image src="http://people.brq.redhat.com/photos/pap_wiki/{{item.owner.rhnick}}.jpg" alt="Photo not found"> -->

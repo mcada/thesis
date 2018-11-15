@@ -11,30 +11,13 @@ import { Subscription } from 'rxjs';
 })
 export class ListComponent implements OnInit, OnDestroy {
 
-  employeeId: String;
-  private sub: Subscription;
-  employee: Employee;
-
   constructor(private employeeService: EmployeeService, private route: ActivatedRoute) {
-    this.sub = new Subscription();    
-   }
+  }
 
   ngOnInit() {
-    this.sub.add(this.route.params.subscribe(params => {
-      this.employeeId = params['id']; // (+) converts string 'id' to a number
-
-      console.log('id: ' + this.employeeId);
-      // In a real app: dispatch action to load the details here.
-      this.sub.add(this.employeeService.getEmployeeById(this.employeeId)
-        .subscribe(employee => {
-          this.employee = employee;
-          console.log(this.employee);
-        }));
-    }));
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe()
   }
 
 }

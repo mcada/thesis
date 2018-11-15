@@ -44,7 +44,18 @@ export class ReviewListComponent implements OnInit, OnDestroy {
       this.sub.add(this.state.subscribe(curr => {
         this.sub.add(this.taskService.getTasks(curr.employee._id, curr.period.date_from, curr.period.date_to)
           .subscribe(tasks => {
-            this.store.dispatch(new StateActions.ChangeTasks(tasks))            
+            this.store.dispatch(new StateActions.ChangeTasks(tasks))
+
+            this.sub.add(this.state.subscribe(curr => {
+              this.sub.add(this.reviewService.getReviewById(curr.employee._id, curr.period._id)
+                .subscribe(rev => {
+                  this.store.dispatch(new StateActions.ChangeReview(rev))
+
+                }));
+            }))
+
+
+
           }))
       }));
     }))

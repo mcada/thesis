@@ -50,7 +50,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
           this.sub.add(this.state.subscribe(curr => {
             var rev: Review = curr.reviews.find(x => x.owner._id == curr.employee._id)
             rev.total_points_from_tasks = rev.total_points_from_tasks + diff
-            rev.total_points = rev.total_points_from_tasks + rev.points_from_team_lead
+            rev.total_points = rev.total_points + diff
 
             this.store.dispatch(new StateActions.ChangeReview(rev))
           }))
