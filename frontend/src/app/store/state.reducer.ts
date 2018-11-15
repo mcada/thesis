@@ -68,7 +68,12 @@ export function stateReducer(state: State = initialState, action: StateActions.A
             //probably not the best approach, but should work
             console.log('reducer dispatching CHANGE_REVIEWS')
             // TODO: sort by two fields - if points are 0 the position is random :(
-            state.reviews = action.payload.sort((a, b) => b.total_points - a.total_points)
+            state.reviews = action.payload.sort((a, b) => {
+                if (b.total_points == a.total_points) {
+                    return a.owner.last_name > b.owner.last_name ? 1 : -1
+                }
+                return b.total_points - a.total_points
+            })
             return state;
         case StateActions.CHANGE_REVIEW:
             //probably not the best approach, but should work
@@ -79,7 +84,12 @@ export function stateReducer(state: State = initialState, action: StateActions.A
             //remove outdated review
             state.reviews = state.reviews.filter(x => x._id != action.payload._id)
             //add updated review
-            state.reviews = [...state.reviews, action.payload].sort((a, b) => b.total_points - a.total_points)
+            state.reviews = [...state.reviews, action.payload].sort((a, b) => {
+                if (b.total_points == a.total_points) {
+                    return a.owner.last_name > b.owner.last_name ? 1 : -1
+                }
+                return b.total_points - a.total_points
+            })
             return state;
         case StateActions.CHANGE_TASKS:
             //probably not the best approach, but should work
