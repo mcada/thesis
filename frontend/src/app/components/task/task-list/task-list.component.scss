@@ -1,31 +1,4 @@
-table {
-  width: 100%;
-}
-
-th.mat-sort-header-sorted {
-  color: black;
-}
-
-.mat-elevation-z8 {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.nadpis {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.add-task {
-  margin-top: 5em;
-  margin-bottom: 10em;
-  width: 40%;
-  background: rgb(84, 228, 238);
-  margin-left: auto;
-  margin-right: auto;
-}
+@import "../../../colors";
 
 .firstFormField {
   margin-top: 20px;
@@ -62,19 +35,19 @@ mat-slider {
 
 mat-card {
   width: 90%;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
-  background: #c2e3b1;
+  background: $color-medium;
 }
 
 .card-inside {
-  background: #bacdaf;
+  background: $color-medium;
 }
 
 mat-expansion-panel {
   margin-bottom: 5px;
-  background: #a695ba;
+  background: $color-light;
 }
 
 mat-panel-title {

@@ -1,5 +1,41 @@
-.current-employee {
-  width: 6em;
-  height: 20em;
-  background: white;
+@import "../../../colors";
+
+mat-card {
+  height: 10em;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: $color-medium;
+  cursor: pointer;
+}
+
+mat-card-subtitle {
+  color: rgba(10, 10, 10, 0.794);
+  font-weight: bold;
+}
+
+p {
+  font-size: 12px;
+  text-align: center;
+}
+
+div {
+  height: 100px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+mat-card-content {
+  padding-top: 4px;
+}
+
+img {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
+  border-radius: 30%;
 }

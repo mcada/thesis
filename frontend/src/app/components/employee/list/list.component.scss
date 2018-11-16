@@ -1,6 +1,8 @@
+@import "../../../colors";
+
 .example-card {
-  width: 250px;
-  height: 400px;
+  width: 200px;
+  height: 300px;
   float: left;
 }
 
@@ -10,9 +12,10 @@
 }
 
 mat-card {
-  margin-left: 2em;
-  margin-bottom: 2em;
-  margin-top: 2em;
+  margin-left: 25px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  cursor: pointer;
 }
 
 mat-card-actions {
@@ -26,8 +29,8 @@ mat-card-actions {
 
 .create-card {
   cursor: pointer;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 300px;
   float: left;
 }
 
@@ -35,18 +38,30 @@ mat-card-actions {
   cursor: pointer;
   text-align: center;
   font-size: 240px;
-  width: 240px;
-  height: 200px;
+  width: 200px;
+  height: 300px;
   align-self: center;
 }
 
-.uprostred {
-  padding-left: 28px;
-  padding-right: 28px;
-  padding-top: 28px;
+img {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  display: block;
 }
 
-mat-card-image {
-  height: 250;
-  width: 240;
+.fill-image {
+  height: 190px;
+  width: 190px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-icon {
+  height: 190px;
+  width: 190px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
 }

@@ -1,11 +1,16 @@
+<mat-card routerLink="/employee/edit/{{(state | async)?.employee._id}}">
+  <mat-card-subtitle>{{(state | async)?.employee.first_name}}
+    {{(state | async)?.employee.last_name}}</mat-card-subtitle>
 
-
-<mat-card class='current-employee'>
-  <mat-card-header>Current employee:</mat-card-header>
+  <mat-divider></mat-divider>
   <mat-card-content>
-      <p>
-          {{(state | async)?.employee.first_name}}
-          {{(state | async)?.employee.last_name}}
-        </p>
+    <p>{{(state | async)?.employee.position}}</p>
+
+    <div>
+
+      <img src="http://people.brq.redhat.com/photos/pap_wiki/{{(state | async)?.employee.rhnick}}.jpg" alt="Photo not found">
+
+    </div>
+
   </mat-card-content>
 </mat-card>

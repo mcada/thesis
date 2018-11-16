@@ -1,23 +1,22 @@
-<mat-card *ngFor="let employee of dataSource" class="example-card">
+<mat-card [routerLink]="['/employee/edit', employee._id]" *ngFor="let employee of dataSource" class="example-card">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{employee.first_name}}_{{employee.last_name}}</mat-card-title>
     <mat-card-subtitle>{{employee.position}}</mat-card-subtitle>
   </mat-card-header>
-    <!-- <img mat-card-image src="http://people.brq.redhat.com/photos/pap_wiki/{{employee.rhnick}}.jpg" alt="Photo not found"> -->
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="No image found">
+
   <mat-card-content>
+    <div class="fill-image">
+      <img src="http://people.brq.redhat.com/photos/pap_wiki/{{employee.rhnick}}.jpg" alt="Photo not found">
+    </div>
     <p>
       Manager: {{employee.manager}} <br> Team Lead: {{employee.team_lead}}
     </p>
   </mat-card-content>
-  <mat-card-actions>
-    <button class="card-button" mat-button [routerLink]="['/employee/edit', employee._id]">Details</button>
-  </mat-card-actions>
 </mat-card>
 
 <mat-card [routerLink]="['/employee/create']" class="create-card">
-  <div class="uprostred">
+  <div class="center-icon">
     <i mat-card-image class="material-icons add-icon">
       note_add
     </i>

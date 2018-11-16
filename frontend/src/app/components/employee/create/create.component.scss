@@ -1,40 +1,48 @@
+@import "../../../colors";
+
 .example-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: 3em;
-    margin-right: 3em;
-    border-style: dashed
-  }
-  
-  mat-form-field {
-    width: 80%;
-    margin-left: 3em;
-    margin-bottom: 1em;
-  }
+  display: flex;
+  flex-direction: column;
+  margin-left: 3em;
+  margin-right: 3em;
+  border-style: dashed;
+  border-color: $color-medium;
+}
 
-  .firstFormField {
-    margin-top: 20px;
-  }
+mat-form-field {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 1em;
+}
 
-  mat-card-title {
-    text-align: center;
-    height: 2em;
-  }
-  
-  mat-card-content {
-    padding-top: 35px;
-  }
-  
-  mat-card {
-    width: 90%;
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    background: #c2e3b1;
-  }
+.firstFormField {
+  margin-top: 25px;
+}
 
-  .submit-button {
-    display: flex;
-    align-items : center ;
-    justify-content : center;
-  }
+mat-card-title {
+  text-align: center;
+  height: 2em;
+}
+
+mat-card-content {
+  padding-top: 35px;
+}
+
+mat-card {
+  width: 90%;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  background: $color-light;
+}
+
+.submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.space-right {
+  margin-right: 10px;
+}

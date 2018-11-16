@@ -1,3 +1,9 @@
+@import "./colors";
+
+* {
+  font-family: $font;
+}
+
 .example-container {
   position: absolute;
   top: 0;
@@ -14,7 +20,7 @@
 }
 
 mat-sidenav {
-  background: #efbac6;
+  background: $color-light;
 }
 
 .right-nav {
@@ -30,7 +36,7 @@ mat-sidenav {
 }
 
 mat-sidenav-content {
-  border-left-style: solid;
+  background-color: $color-background;
 }
 
 mat-card {
@@ -40,12 +46,11 @@ mat-card {
 }
 
 .nav-button {
-  background-color: #fff1c7;
   padding: 10px;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   margin: 10%;
   width: 80%;
-  align-content: center;
+  font-size: 1em;
 }

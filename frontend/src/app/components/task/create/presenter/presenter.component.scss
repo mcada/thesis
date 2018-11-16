@@ -1,7 +1,9 @@
+@import "../../../../colors";
+
 .add-task {
   margin-bottom: 10em;
   width: 60%;
-  background: #bacdaf;
+  background: $color-light;
   margin-left: auto;
   margin-right: auto;
 }
@@ -36,10 +38,10 @@ mat-form-field {
 
 mat-card {
   width: 90%;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
-  background: #c2e3b1;
+  background: $color-medium;
 }
 
 mat-card-title {

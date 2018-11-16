@@ -1,3 +1,5 @@
+@import "../../colors";
+
 table {
   width: 100%;
 }
@@ -16,7 +18,6 @@ table {
   margin-right: auto;
 }
 
-
 mat-card-title {
   text-align: center;
   height: 2em;
@@ -31,14 +32,13 @@ mat-card {
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
-  background: #c2e3b1;
+  background: $color-medium;
 }
-
 
 .add-config {
   margin-bottom: 10em;
   width: 80%;
-  background: #bacdaf;
+  background: $color-light;
   margin-left: auto;
   margin-right: auto;
 }

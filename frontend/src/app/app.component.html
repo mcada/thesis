@@ -2,19 +2,19 @@
 
 <mat-sidenav-container class="example-container">
   <mat-sidenav class=left-nav mode="side" opened>
-    <nav>
-      <div>
-        <button class="nav-button" mat-raised-button routerLink="/config">Settings</button>
-      </div>
-      <p>Employee veci</p>
-      <div>
-        <button class="nav-button" mat-raised-button routerLink="/employee/list">List</button>
-      </div>
-
-
-    </nav>
 
     <app-current-employee></app-current-employee>
+    <mat-divider></mat-divider>
+    <nav>
+
+      <div>
+        <button class="nav-button" mat-raised-button routerLink="/employee/list">EMPLOYEES</button>
+      </div>
+      <div>
+        <button class="nav-button" mat-raised-button routerLink="/config">SETTINGS</button>
+      </div>
+
+    </nav>
 
   </mat-sidenav>
 
