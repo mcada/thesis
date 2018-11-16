@@ -29,3 +29,9 @@ img {
 .fill-image {
   background-color: $color-medium;
 }
+
+.current {
+  border-style: solid;
+  border-color: $color-dark;
+  border-width: 2px;
+}

@@ -5,16 +5,21 @@
     </span>
 
     <span class='current-period' [mat-menu-trigger-for]="menu">Period:
-      {{(state | async).period.date_from | date: local}} - {{(state | async).period.date_to
+      {{(state | async).period.date_from  | date: local}} - {{(state | async).period.date_to
       | date: local}}</span>
-    <button mat-icon-button [mat-menu-trigger-for]="menu">
+    <button mat-icon-button [mat-menu-trigger-for]="menu2">
       <mat-icon>more_vert</mat-icon>
     </button>
 
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-menu [overlapTrigger]="false" #menu="matMenu">
-  <button mat-menu-item routerLink="/employee/list">Employee list</button>
-  <button mat-menu-item routerLink="/config">Settings</button>
-  <button mat-menu-item routerLink="/">Logout</button>
+  <button mat-menu-item *ngFor="let config of (state | async)?.configs" value={{config}} (click)="setConfig(config)">{{config.date_from
+    | date: local}} - {{config.date_to | date: local}}</button>
 </mat-menu>
+
+<mat-menu [overlapTrigger]="false" #menu2="matMenu">
+    <button mat-menu-item routerLink="/employee/list">Employee list</button>
+    <button mat-menu-item routerLink="/config">Settings</button>
+    <button mat-menu-item routerLink="/">Logout</button>
+  </mat-menu>

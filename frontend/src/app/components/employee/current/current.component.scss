@@ -8,6 +8,9 @@ mat-card {
   margin-bottom: 25px;
   background-color: $color-medium;
   cursor: pointer;
+  border-style: solid;
+  border-color: $color-dark;
+  border-width: 1px;
 }
 
 mat-card-subtitle {
