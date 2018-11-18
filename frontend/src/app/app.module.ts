@@ -27,6 +27,7 @@ import { stateReducer } from './store/state.reducer';
 import { CurrentComponent } from './components/employee/current/current.component';
 import { PresenterComponent } from './components/review/review-edit/presenter/presenter.component';
 import { TaskPresenterComponent } from './components/task/create/presenter/presenter.component';
+import { TasksPresenterComponent } from './components/task/task-list/tasks-presenter/tasks-presenter.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { TaskPresenterComponent } from './components/task/create/presenter/prese
     CreateTaskComponent,
     CurrentComponent,
     PresenterComponent,
-    TaskPresenterComponent
+    TaskPresenterComponent,
+    TasksPresenterComponent
   ],
   imports: [
     BrowserModule,

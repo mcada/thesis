@@ -16,22 +16,12 @@ token - jira credentials, the result of string "nick:password" encoded into base
 
 
 
-todo list:
 
-#### validace metod kontroleru
-    - update neresi jestli neco udelal nebo nebo ne
-    - zajistit aby sly provadet jen safe operace
-        - ACID
+### TODO:
 
-#### zjistit jestli potrebuji routu '/' v backendu
+#### backend
+Add parameter for database connection URL so it can be inserted via template when starting the application
 
-#### refactorovat startovani expressu a pripojovani k databazi
-    - aby se to dalo jednoduse parametrizovat napr. z openshift template
-
-# frontend
-
-conditional css class to currently selected employee
-
-sorting of reviews is only by points - when two ppl have the same points, its random so it changes randomly on clicks
-
-
+#### frontend
+Change task-list to use presenter component, update design to allow changing
+bonus points without opening task details

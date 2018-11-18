@@ -7,11 +7,15 @@
     <mat-expansion-panel *ngFor="let task of (state | async)?.tasks">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{task.date | date: shortDate}} - {{task.description}}
+          <div class='absolute-center'>
+            {{task.date | date: shortDate}} - {{task.description}}
+          </div>
         </mat-panel-title>
         <mat-panel-description>
-          <div>Bonus points: {{task.bonus_points}}____</div>
-          <a *ngIf="task.jira_link" href="{{task.jira_link}}">Jira link</a>
+          <div class='space-right absolute-center'>Bonus points: {{task.bonus_points}}</div>
+          <a *ngIf="task.jira_link" target="_blank" href="{{task.jira_link}}">
+            <button mat-raised-button>Go to Jira</button>
+          </a>
 
         </mat-panel-description>
       </mat-expansion-panel-header>

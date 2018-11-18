@@ -38,17 +38,19 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   updateFromJira() {
-    this.sub.add(this.configService.updateFromJira().subscribe(res => {
-      console.log(res)
+    if (window.confirm('Older jira tasks will not be loaded if you add new employee after update. Continue?')) {
+      this.sub.add(this.configService.updateFromJira().subscribe(res => {
+        console.log(res)
 
-      this.sub.add(this.configService.lastJiraUpdate().subscribe(data => {
-        this.jiraLastUpdate = data
+        this.sub.add(this.configService.lastJiraUpdate().subscribe(data => {
+          this.jiraLastUpdate = data
 
-        this.snackBar.open('Uploading jira tasks...', 'OK', {
-          duration: 3000,
-        });
+          this.snackBar.open('Uploading jira tasks...', 'OK', {
+            duration: 3000,
+          });
+        }))
       }))
-    }))
+    }
   }
 
   setConfig(config: Config) {

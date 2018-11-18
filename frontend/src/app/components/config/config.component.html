@@ -66,11 +66,18 @@
   <mat-card-content>
 
     <mat-card class='add-config'>
-      <p>Last update: {{ jiraLastUpdate }}</p>
-      <button mat-raised-button (click)="updateFromJira()">Upload new tasks</button>
 
+      <mat-grid-list cols="3" rowHeight="4em">
 
+        <mat-grid-tile colspan=2>
+          <p>Last update: {{ jiraLastUpdate }}</p>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan=1>
+          <button mat-raised-button (click)="updateFromJira()">Upload new tasks</button>
+        </mat-grid-tile>
+
+      </mat-grid-list>
     </mat-card>
-
   </mat-card-content>
 </mat-card>

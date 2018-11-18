@@ -39,6 +39,7 @@ export class EditComponent implements OnInit, OnDestroy {
         .subscribe(employee => {
           this.employee = employee;
           console.log(this.employee);
+          this.store.dispatch(new StateActions.ChangeEmployee(this.employee))
         }));
     }));
   }
@@ -46,11 +47,12 @@ export class EditComponent implements OnInit, OnDestroy {
   save(): void {
     console.log(this.employee);
     this.sub.add(this.employeeService.updateEmployee(this.employee)
-      .subscribe((data) => {
-        console.log(data);
+      .subscribe((res) => {
+        console.log(res);
         this.snackBar.open('Employee updated', 'OK', {
           duration: 3000,
         });
+        this.store.dispatch(new StateActions.ChangeEmployee(this.employee))
         // Page redirect when getting response
         this.router.navigate(['/employee/list']);
       }, (error) => {
