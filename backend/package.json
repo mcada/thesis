@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "babel-watch server.js"
+    "dev": "babel-watch server.js",
+    "prod": "babel-watch server.js"
   },
   "keywords": [],
   "author": "",

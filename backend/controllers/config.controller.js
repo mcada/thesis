@@ -96,13 +96,15 @@ exports.update_tasks_from_jira = function (req, res) {
         if (err) console.log(err);
         var dateFrom = dateFormat(settings.updated, "yyyy-mm-dd");
         var dateTo = dateFormat(new Date(), "yyyy-mm-dd");
+        
+        const PROJECT =  process.env.PROJECT || 'FUSEQE';
 
         const cursor = Employee.find().cursor();
 
         cursor.on('data', employee => {
 
             var bodyData = {
-                "jql": "project = FUSEQE & assignee = '" + employee.rhnick + "' & status = closed & resolutiondate >= " + dateFrom + ' & resolutiondate <= ' + dateTo,
+                "jql": "project = '" + PROJECT + "' & assignee = '" + employee.rhnick + "' & status = closed & resolutiondate >= " + dateFrom + ' & resolutiondate <= ' + dateTo,
                 "startAt": 0,
                 "maxResults": 1000,
                 "fields":

@@ -42,9 +42,10 @@ connection.once('open', () => {
 var mongodb;
 
 // Connection URL
-var url = 'mongodb://localhost:27017/coolDatabase';
+const URL =  process.env.DATABASE || 'mongodb://localhost:27017/coolDatabase';
+const PORT = process.env.PORT || 4000; 
 // Create the database connection
-mongoose.connect(url, {
+mongoose.connect(URL, {
     poolSize: 3,
     useNewUrlParser: true
     // other options can go here
@@ -55,7 +56,7 @@ mongoose.connect(url, {
 /////////////////////////////////////////////////////////////////////
 
 
-app.listen(4000, () => console.log(`Express server running on port 4000`));
+app.listen(PORT, () => console.log(`Express server running on port ` + PORT));
 
 process.on('SIGINT', function () {
     mongodb.close(function () {
