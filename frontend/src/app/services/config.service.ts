@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Config } from '../models/config.model';
-import { CONFIGS } from '../models/mock-config';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
-import { ReviewService } from './review/review.service';
 import { MatSnackBar } from '@angular/material';
+import { environment } from './../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,8 +16,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ConfigService {
-  //TODO: get this URL from some file or environment variable
-  public backendUrl = 'http://localhost:4000/';
+  public backendUrl = environment.backendUrl;
 
   constructor(public snackBar: MatSnackBar, private http: HttpClient) {
   }
