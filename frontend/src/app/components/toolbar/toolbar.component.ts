@@ -16,6 +16,7 @@ import { TaskService } from 'src/app/services/task/task.service';
 export class ToolbarComponent implements OnInit, OnDestroy {
   state: Observable<State>;
   private sub: Subscription;
+  local: Date;
 
   constructor(private taskService: TaskService, private reviewService: ReviewService, private store: Store<State>, private configService: ConfigService) {
     this.sub = new Subscription();
@@ -29,7 +30,7 @@ export class ToolbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
+    this.local = new Date();
   }
 
   ngOnDestroy(): void {
